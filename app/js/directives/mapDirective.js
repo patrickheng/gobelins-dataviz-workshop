@@ -1,5 +1,6 @@
 'use strict';
 import 'gsap';
+import PixiMap from '../pixi/Map';
 
 /**
  * @ngdoc directive
@@ -16,8 +17,10 @@ function map($rootScope) {
     replace: true,
 
     link: (scope, element) => {
-      const mapGround = element[0].querySelectorAll('.map-below .map-ground');
+      const mapGround = element[0].querySelectorAll('.map--below .map-ground');
       const tl = new TimelineMax();
+
+      const pixiMap = new PixiMap();
 
       tl.staggerFromTo(mapGround, 0.5, {scale:1.5, opacity:0}, { scale: 1, opacity: 1, ease: Cubic.easeOut}, 0.008);
     }

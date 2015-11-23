@@ -10,12 +10,14 @@ class Scene {
      */
     constructor() {
 
-        this.width = window.innerWidth;
-        this.height = window.innerHeight;
+        this.containerBoundingBox = document.querySelector('.map').getBoundingClientRect();
+        this.width = this.containerBoundingBox.width;
+        this.height = this.containerBoundingBox.height;
+
         this.renderer = new WebGLRenderer(this.width, this.height, {
-            antialias: true
+            antialias: true,
+            transparent: true
         });
-        this.renderer.backgroundColor = 0x101010;
 
         this.stage = new Container();
     }

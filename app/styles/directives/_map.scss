@@ -1,8 +1,14 @@
-.map {
+.map-container {
   position: relative;
   top: 50%;
   transform: translate3d(0 , -50%, 0);
-  svg {
+  .map {
+    &--above {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
     polygon {
       opacity: 0;
     }
@@ -25,6 +31,12 @@
         opacity: 0.8 !important;
       }
     }
+  }
+
+  #map-canvas-container {
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 }
 
