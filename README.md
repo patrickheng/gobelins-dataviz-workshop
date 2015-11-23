@@ -15,4 +15,11 @@ We have four days to imagine, design and develop a data visualization on the the
 
 #### TECHNOLOGIES
 
+
+* AngularJs 
 * GSAP - TweenMax
+* Babel | ES2015
+* Browserify
+* JSHint
+* Gulp
+* SASS
