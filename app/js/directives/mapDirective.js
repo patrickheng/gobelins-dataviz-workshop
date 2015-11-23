@@ -9,7 +9,7 @@ import PixiMap from '../pixi/Map';
  * @module app
  * @restrict E
  */
-function map($rootScope) {
+function map($rootScope, StatsService) {
 
   return {
     restrict: 'E',
@@ -17,6 +17,14 @@ function map($rootScope) {
     replace: true,
 
     link: (scope, element) => {
+      StatsService.getFlux().then(function(data) {
+          scope.fluxData = data;
+      });
+      StatsService.getExpenses().then(function(data) {
+          scope.expensesData = data;
+      });
+
+      console.log(scope.fluxData);
       const mapGround = element[0].querySelectorAll('.map--below .map-ground');
       const tl = new TimelineMax();
 

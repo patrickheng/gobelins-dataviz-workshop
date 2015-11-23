@@ -2,7 +2,7 @@
 import 'gsap';
 import PxLoader from 'pxloader-browserify';
 
-function HomeCtrl(ProjectsService, $scope, $rootScope, $timeout) {
+function HomeCtrl($scope, $rootScope, $timeout) {
 
   // ViewModel
   const vm = this;
