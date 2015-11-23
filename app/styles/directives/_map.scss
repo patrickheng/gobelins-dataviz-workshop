@@ -1,0 +1,41 @@
+.map {
+  position: relative;
+  top: 50%;
+  transform: translate3d(0 , -50%, 0);
+  svg {
+    polygon {
+      opacity: 0;
+    }
+    .map-ground, .map-ground-group {
+      clip-rule: evenodd;
+      fill-rule: evenodd;
+      fill: $color-map-fill;
+      opacity: 0.7;
+      stroke-linecap: round;
+      stroke-linejoin: bevel;
+      stroke-miterlimit: 10;
+      stroke-width: 0.5;
+      stroke: $color-dark-blue;
+    }
+
+    .map-active-state {
+      cursor: pointer;
+      fill: $color-light-blue;
+      &:hover {
+        opacity: 0.8 !important;
+      }
+    }
+  }
+}
+
+@keyframes fillAnimation {
+  from {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  to {
+    opacity: 1;
+  }
+}
