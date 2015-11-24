@@ -1,8 +1,13 @@
 .map-container {
   position: relative;
-  top: 50%;
-  transform: translate3d(0 , -50%, 0);
+  width: 90%;
+  /* height: 100%; */
+  margin: 4% auto 4% 8.5%;
+
   .map {
+    display: block;
+    pointer-events: none;
+
     &--above {
       position: absolute;
       top: 0;
