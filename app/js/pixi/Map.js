@@ -38,15 +38,16 @@ class PixiMap {
       const options = {
         scene: this.scene,
         particlesNumber: Math.floor(this.flux[i].number / 1000),
-        particleTexture: '/images/pixi/particle.png',
+        particleTexture: '/images/pixi/man.png',
         sourcePosition: {
           x: this.flux[i].posX * this.width / 100,
           y: this.flux[i].posY * this.height / 100
         },
         targetPosition: {
-          x: 11.1 * this.width / 100,
-          y: 33.8 * this.height / 100
-        }
+          x: 10.5 * this.width / 100,
+          y: 33 * this.height / 100
+        },
+        color: Math.random() * 0xFFFFFF
       }
       const pEmit = new ParticlesEmitter(options);
 

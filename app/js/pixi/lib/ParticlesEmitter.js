@@ -30,18 +30,14 @@ export default class ParticlesEmitter extends EmitterBase {
     generateTl() {
         this.tl = new TimelineMax({repeat: -1});
         this.tl
-            .staggerFromTo(this.particles, this.speed,
-                {
-                    x: this.sourcePosition.x,
-                    y: this.sourcePosition.y
-                },
+            .staggerTo(this.particles, this.speed,
                 {
                     bezier:[{x: this.sourcePosition.x, y: this.sourcePosition.y},
-                        {x: (this.sourcePosition.x - this.targetPosition.x) / 4, y: this.targetPosition.y * 0.1 },
+                        {x: this.sourcePosition.x / 2, y: this.sourcePosition.y/10},
                         {x: this.targetPosition.x, y: this.targetPosition.y}],
                     ease:Power1.easeInOut
                 }
-            , 100 / this.particulesNumber );
+            , 100 / this.particulesNumber);
     }
 
     /**
@@ -59,6 +55,7 @@ export default class ParticlesEmitter extends EmitterBase {
             this.particles[i].x = updateVal.sourcePosition.x;
             this.particles[i].y = updateVal.sourcePosition.y;
         }
+        this.tl.kill();
         this.generateTl();
     }
 
