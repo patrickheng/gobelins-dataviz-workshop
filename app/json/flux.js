@@ -9,7 +9,7 @@ const flux = [
     "name": "Belgique",
     "number": 287222,
     "posX": 12,
-    "posY": 32
+    "posY": 31
   },
   {
     "name": "Chine",
@@ -20,8 +20,8 @@ const flux = [
   {
     "name": "RoyaumeUni",
     "number": 994288,
-    "posX": 9.3,
-    "posY": 30.6
+    "posX": 7.7,
+    "posY": 28.6
   },
   {
     "name": "Japon",

@@ -20,7 +20,7 @@ export default class ParticlesEmitter extends EmitterBase {
 
         this.scene = options.scene;
 
-        this.speed = 5000 / this.particulesNumber;
+        this.speed = 3000 / this.particulesNumber;
 
         this.throw(Particle, options);
 
@@ -35,9 +35,9 @@ export default class ParticlesEmitter extends EmitterBase {
                     bezier:[{x: this.sourcePosition.x, y: this.sourcePosition.y},
                         {x: this.sourcePosition.x / 2, y: this.sourcePosition.y/10},
                         {x: this.targetPosition.x, y: this.targetPosition.y}],
-                    ease:Power1.easeInOut
+                    ease:Power1.easeOut
                 }
-            , 100 / this.particulesNumber);
+            , 200 / this.particulesNumber);
     }
 
     /**

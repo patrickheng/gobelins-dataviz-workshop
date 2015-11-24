@@ -37,7 +37,7 @@ class PixiMap {
     for (let i = 0; i < this.flux.length; i++) {
       const options = {
         scene: this.scene,
-        particlesNumber: Math.floor(this.flux[i].number / 1000),
+        particlesNumber: Math.floor(this.flux[i].number / 2000),
         particleTexture: '/images/pixi/man.png',
         sourcePosition: {
           x: this.flux[i].posX * this.width / 100,
