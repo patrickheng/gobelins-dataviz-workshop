@@ -17,18 +17,16 @@ function map($rootScope, StatsService) {
     replace: true,
 
     link: (scope, element) => {
-      StatsService.getFlux().then(function(data) {
-          scope.fluxData = data;
-      });
-      StatsService.getExpenses().then(function(data) {
-          scope.expensesData = data;
-      });
 
-      console.log(scope.fluxData);
+      const pixiOptions =  {
+        flux: StatsService.getFlux(),
+        expenses: StatsService.getExpenses()
+      }
+
       const mapGround = element[0].querySelectorAll('.map--below .map-ground');
       const tl = new TimelineMax();
 
-      const pixiMap = new PixiMap();
+      const pixiMap = new PixiMap(pixiOptions);
 
       tl.staggerFromTo(mapGround, 0.5, {scale:1.5, opacity:0}, { scale: 1, opacity: 1, ease: Cubic.easeOut}, 0.008);
     }

@@ -7,18 +7,21 @@ import {
 from 'pixi.js';
 
 import NumberUtils from './lib/utils/number-utils';
-
+import ParticlesEmitter from './lib/ParticlesEmitter';
 
 class PixiMap {
   /**
    * @constructor
    */
-  constructor() {
+  constructor(options) {
     // Calculate time
     this.DELTA_TIME = 0;
     this.LAST_TIME = Date.now();
-    this.container = document.querySelector('.map');
 
+    this.flux = options.flux;
+    this.expenses = options.expenses;
+
+    this.container = document.querySelector('.map');
     this.containerBoundingBox = this.container.getBoundingClientRect();
     this.width = this.containerBoundingBox.width;
     this.height = this.containerBoundingBox.height;
@@ -29,6 +32,21 @@ class PixiMap {
 
     this.backgroundReady = false;
     this.projectIndex = 0;
+    this.particlesEmitters = [];
+
+    for (let i = 0; i < this.flux.length; i++) {
+      const options = {
+        scene: this.scene,
+        particlesNumber: Math.floor(this.flux[i].number / 1000),
+        particleTexture: '/images/pixi/particle.png',
+        pos: {
+          x: this.flux[i].posX,
+          y:this.flux[i].posY
+        }
+      }
+      const pEmit = new ParticlesEmitter(options);
+    }
+    //
 
     // Render pixi view
     let root = document.body.querySelector('#map-canvas-container');
@@ -59,6 +77,8 @@ class PixiMap {
 
     this.DELTA_TIME = Date.now() - this.LAST_TIME;
     this.LAST_TIME = Date.now();
+
+    // this.particlesEmitter.update();
 
     this.scene.render();
 
