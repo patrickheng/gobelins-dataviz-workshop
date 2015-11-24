@@ -31,7 +31,6 @@ export default class EmmiterBase {
             this.particles.push(p);
 
             this.scene.addChild(p);
-            console.log(p);
         }
     }
 

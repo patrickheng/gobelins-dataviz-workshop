@@ -1,39 +1,33 @@
 .map-container {
   position: relative;
-  width: 90%;
-  /* height: 100%; */
-  margin: 4% auto 4% 8.5%;
 
+  width: 90%;
+  margin: 4% auto 4% 8.5%;
   .map {
     display: block;
-    pointer-events: none;
 
-    &--above {
-      position: absolute;
-      top: 0;
-      left: 0;
-      opacity: 0;
-    }
-    polygon {
-      opacity: 0;
-    }
-    .map-ground, .map-ground-group {
-      clip-rule: evenodd;
-      fill-rule: evenodd;
+    .map-ground {
       fill: $color-map-fill;
-      opacity: 0.7;
-      stroke-linecap: round;
-      stroke-linejoin: bevel;
-      stroke-miterlimit: 10;
-      stroke-width: 0.5;
       stroke: $color-dark-blue;
+      stroke-width: 0.5;
+      opacity: 0;
     }
 
     .map-active-state {
       cursor: pointer;
       fill: $color-light-blue;
-      &:hover {
-        opacity: 0.8 !important;
+
+      &.map-ground {
+        fill: $color-light-blue;
+      }
+
+    }
+
+    &--is-init {
+      .map-active-state {
+        &:hover {
+          opacity: 0.8 !important;
+        }
       }
     }
   }
@@ -42,17 +36,17 @@
     position: absolute;
     top: 0;
     left: 0;
+    pointer-events: none;
+    canvas {
+      pointer-events: none;
+    }
   }
 }
 
-@keyframes fillAnimation {
-  from {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.7;
-  }
-  to {
-    opacity: 1;
+
+@media only screen and (max-width: 767px) {
+  .map-container {
+    top: 50%;
+    transform: translateY(-50%);
   }
 }

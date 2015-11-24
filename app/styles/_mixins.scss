@@ -55,11 +55,6 @@
 }
 
 // Responsive breakpoints
-@mixin tablet-large {
-  @media only screen and (max-width: 1200px) {
-    @content;
-  }
-}
 @mixin mobile {
   @media only screen and (max-width: 767px) {
     @content;
@@ -67,26 +62,6 @@
 }
 @mixin tablet {
   @media only screen and (max-width : 1024px) {
-    @content;
-  }
-}
-@mixin mobile-portrait {
-  @media only screen and (max-width: 416px) and (orientation:portrait) {
-    @content;
-  }
-}
-@mixin mobile-landscape {
-  @media only screen and (max-width: 768px) and (orientation:landscape) {
-    @content;
-  }
-}
-@mixin tablet-portrait {
-  @media only screen and (max-width: 769px) and (orientation:portrait) {
-    @content;
-  }
-}
-@mixin tablet-landscape {
-  @media only screen and (max-width: 1024px) and (orientation:landscape) {
     @content;
   }
 }

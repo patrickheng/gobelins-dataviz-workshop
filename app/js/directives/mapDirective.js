@@ -17,6 +17,9 @@ function map($rootScope, StatsService) {
     replace: true,
 
     link: (scope, element) => {
+      scope.mapIsInit = false;
+
+      let pixiMap = {};
 
       const pixiOptions =  {
         flux: StatsService.getFlux(),
@@ -24,9 +27,12 @@ function map($rootScope, StatsService) {
       }
 
       const mapGround = element[0].querySelectorAll('.map--below .map-ground');
-      const tl = new TimelineMax();
 
-      const pixiMap = new PixiMap(pixiOptions);
+      const tl = new TimelineMax({onComplete: ()=> {
+        scope.mapIsInit = true;
+        pixiMap = new PixiMap(pixiOptions);
+        scope.$apply();
+      }});
 
       tl.staggerFromTo(mapGround, 0.5, {scale:1.5, opacity:0}, { scale: 1, opacity: 1, ease: Cubic.easeOut}, 0.008);
     }

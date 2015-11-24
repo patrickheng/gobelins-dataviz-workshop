@@ -8,13 +8,13 @@ export default class Particle extends Sprite {
      * @param {object} options - Options of the particule
      */
     constructor(options) {
-        console.log('options', options);
         super();
 
-        this.x = options.pos.x;
-        this.y = options.pos.y;
+        this.x = options.sourcePosition.x;
+        this.y = options.sourcePosition.y;
 
         this.texture = PIXI.Texture.fromImage(options.particleTexture);
+        // this.scale.set(options.particlesNumber / 500);
     }
 
     /**

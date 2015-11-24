@@ -39,12 +39,18 @@ class PixiMap {
         scene: this.scene,
         particlesNumber: Math.floor(this.flux[i].number / 1000),
         particleTexture: '/images/pixi/particle.png',
-        pos: {
-          x: this.flux[i].posX,
-          y:this.flux[i].posY
+        sourcePosition: {
+          x: this.flux[i].posX * this.width / 100,
+          y: this.flux[i].posY * this.height / 100
+        },
+        targetPosition: {
+          x: 11.1 * this.width / 100,
+          y: 33.8 * this.height / 100
         }
       }
       const pEmit = new ParticlesEmitter(options);
+
+      this.particlesEmitters.push(pEmit);
     }
     //
 
@@ -97,6 +103,21 @@ class PixiMap {
     this.containerBoundingBox = this.container.getBoundingClientRect();
     this.width = this.containerBoundingBox.width;
     this.height = this.containerBoundingBox.height;
+
+    // Particules resize
+    for (let i = 0; i < this.particlesEmitters.length; i++) {
+      const updateVal = {
+        sourcePosition: {
+          x: this.flux[i].posX * this.width / 100,
+          y: this.flux[i].posY * this.height / 100
+        },
+        targetPosition: {
+          x: 11.1 * this.width / 100,
+          y: 33.8 * this.height / 100
+        }
+      }
+      this.particlesEmitters[i].onResize(updateVal);
+    }
 
     this.scene.resize(this.width, this.height);
   }

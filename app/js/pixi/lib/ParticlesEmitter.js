@@ -13,7 +13,14 @@ export default class ParticlesEmitter extends EmitterBase {
     constructor(options) {
         super();
 
+        this.particulesNumber = options.particlesNumber;
+
+        this.sourcePosition = options.sourcePosition;
+        this.targetPosition = options.targetPosition;
+
         this.scene = options.scene;
+
+        this.speed = 5000 / this.particulesNumber;
 
         this.throw(Particle, options);
 
@@ -21,9 +28,38 @@ export default class ParticlesEmitter extends EmitterBase {
     }
 
     generateTl() {
-        this.tl = new TimelineMax({repeat: -1, yoyo: true});
-        // this.tl
-        //     .staggerTo(this.particles, 5, {bezier:[{x:100, y:250}, {x:300, y:0}, {x:500, y:400}], ease:Power1.easeInOut}, 0.5);
+        this.tl = new TimelineMax({repeat: -1});
+        this.tl
+            .staggerFromTo(this.particles, this.speed,
+                {
+                    x: this.sourcePosition.x,
+                    y: this.sourcePosition.y
+                },
+                {
+                    bezier:[{x: this.sourcePosition.x, y: this.sourcePosition.y},
+                        {x: (this.sourcePosition.x - this.targetPosition.x) / 4, y: this.targetPosition.y * 0.1 },
+                        {x: this.targetPosition.x, y: this.targetPosition.y}],
+                    ease:Power1.easeInOut
+                }
+            , 100 / this.particulesNumber );
+    }
+
+    /**
+     * @method
+     * @name onResize
+     * @description onResize handler
+     * @param {object} updateVal - New position of points
+     */
+    onResize(updateVal) {
+
+        this.sourcePosition = updateVal.sourcePosition;
+        this.targetPosition = updateVal.targetPosition;
+
+        for (var i = 0; i < this.particles.length; i++) {
+            this.particles[i].x = updateVal.sourcePosition.x;
+            this.particles[i].y = updateVal.sourcePosition.y;
+        }
+        this.generateTl();
     }
 
     /**
