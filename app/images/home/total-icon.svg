@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 238.7 119" style="enable-background:new 0 0 238.7 119;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFD56C;}
+	.st1{fill:#BAE3FA;}
+	.st2{fill:#102533;}
+	.st3{fill:#EA5581;}
+	.st4{fill:#9898CB;}
+	.st5{fill:#202033;}
+	.st6{fill:#FFFFFF;}
+	.st7{fill:#CDCCCC;}
+	.st8{fill:#9E9E9E;}
+	.st9{fill:#6E6E6E;}
+</style>
+<g>
+	<rect y="0.1" class="st6" width="237.2" height="118.8"/>
+	<path class="st7" d="M238.7,0H107.4C93.3,16,84.7,36.7,84.7,59.5c0,22.8,8.6,44.5,22.8,59.5h131.2V0z"/>
+	<rect x="210" class="st8" width="14" height="118.9"/>
+	<rect x="22" y="4.3" class="st7" width="26" height="16.7"/>
+	<polygon class="st8" points="104.9,28.8 106.8,32.7 111.1,33.4 108,36.4 108.7,40.7 104.9,38.6 101,40.7 101.8,36.4 98.7,33.4 
+		103,32.7 	"/>
+	<polygon class="st8" points="98.9,53.3 100.8,57.2 105.1,57.9 102,60.9 102.7,65.2 98.9,63.1 95,65.2 95.8,60.9 92.7,57.9 97,57.2 
+			"/>
+	<polygon class="st8" points="104.9,77.8 106.8,81.7 111.1,82.4 108,85.4 108.7,89.7 104.9,87.6 101,89.7 101.8,85.4 98.7,82.4 
+		103,81.7 	"/>
+	<rect y="0.1" class="st8" width="10.8" height="118.9"/>
+	<g>
+		<path class="st9" d="M120.3,56.1l3.7-7.4h5.3c2.5-14.1,11.1-22.2,24-22.2c8.4,0,14.4,3.5,18.2,10.5l-6.5,3.6
+			c-2.8-4.5-6.6-6.7-11.6-6.7c-8.9,0-14.3,5-16.2,14.8h21.8l-3.7,7.4h-18.8V63h22.5l-3.7,7.4H137c1.9,9.9,7.3,14.8,16.2,14.8
+			c5,0,8.8-2.2,11.6-6.7l6.5,3.6c-3.8,7-9.8,10.5-18.2,10.5c-12.8,0-21.5-8.1-24-22.2h-8.9L124,63h4.6v-6.8H120.3z"/>
+	</g>
+</g>
+</svg>

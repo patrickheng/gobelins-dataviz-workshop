@@ -1,5 +1,6 @@
-const expenses = {
-  "Allemagne": {
+const expenses = [
+  {
+    "name": "Allemagne",
     "hebergement": 100,
     "restauration": 3,
     "loisirs": 5,
@@ -7,7 +8,8 @@ const expenses = {
     "transports": 17,
     "total": 172,
   },
-  "Belgique": {
+  {
+    "name": "Belgique",
     "hebergement": 105,
     "restauration": 45,
     "loisirs": 3,
@@ -15,7 +17,8 @@ const expenses = {
     "transports": 9,
     "total": 176,
   },
-  "Chine": {
+  {
+    "name": "Chine",
     "hebergement": 61,
     "restauration": 32,
     "loisirs": 19,
@@ -23,15 +26,8 @@ const expenses = {
     "transports": 11,
     "total": 197,
   },
-  "France": {
-    "hebergement": 62,
-    "restauration": 32,
-    "loisirs": 5,
-    "shopping": 10,
-    "transports": 8,
-    "total": 117,
-  },
-  "RoyaumeUni": {
+  {
+    "name": "RoyaumeUni",
     "hebergement": 124,
     "restauration": 42,
     "loisirs": 2,
@@ -39,7 +35,8 @@ const expenses = {
     "transports": 17,
     "total": 202,
   },
-  "Japon": {
+  {
+    "name": "Japon",
     "hebergement": 86,
     "restauration": 38,
     "loisirs": 15,
@@ -47,7 +44,8 @@ const expenses = {
     "transports": 11,
     "total": 217,
   },
-  "MoyenOrient": {
+  {
+    "name": "MoyenOrient",
     "hebergement": 72,
     "restauration": 38,
     "loisirs": 16,
@@ -55,7 +53,8 @@ const expenses = {
     "transports": 13,
     "total": 190,
   },
-  "Russie": {
+  {
+    "name": "Russie",
     "hebergement": 74,
     "restauration": 41,
     "loisirs": 19,
@@ -63,5 +62,5 @@ const expenses = {
     "transports": 7,
     "total": 191,
   }
-}
+]
 export default expenses;

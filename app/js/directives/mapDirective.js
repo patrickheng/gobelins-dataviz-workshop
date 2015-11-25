@@ -23,13 +23,16 @@ function map($rootScope, $timeout, StatsService) {
       scope.mapGroundStyle = {};
       scope.mapGroundGroupStyle = {};
 
-      const fluxData = StatsService.getFlux();
-      const expensesData = StatsService.getExpenses();
+
+      scope.fluxData = StatsService.getFlux();
+      scope.expensesData = StatsService.getExpenses();
+      scope.pictoData = [];
+      scope.mapHoverSuffix = 'visiteurs';
 
       const mapGround = element[0].querySelectorAll('.map--below .map-ground');
       const pixiOptions =  {
-        flux: fluxData,
-        expenses: expensesData
+        flux: scope.fluxData,
+        expenses: scope.expensesData
       }
 
       let pixiMap = {};
@@ -50,35 +53,37 @@ function map($rootScope, $timeout, StatsService) {
 
       // Watchers
       $rootScope.$watch('mapMode', (newVal) =>{
-        if(newVal !== 'flux') {
+        if(newVal === 'flux') {
+          if(pixiMap.fluxMapTlInit) {
+            pixiMap.playFluxMap();
+            scope.mapHoverSuffix = 'visiteurs';
+          }
+        } else {
           pixiMap.stopFluxMap();
-        }
-        switch (newVal) {
-          case 'flux':
-            if(pixiMap.fluxMapTlInit){
-              pixiMap.playFluxMap();
-            }
-            break;
-          case 'hebergement':
-
-            break;
-          case 'restauration':
-
-            break;
-          case 'transport':
-
-            break;
-          case 'shopping':
-
-            break;
-          case 'total':
-
-            break;
-
-          default:
-
+          scope.pictoData = scope.getPictoData(newVal);
+          scope.mapHoverSuffix = '€';
         }
       }, true);
+
+      /**
+       * @method
+       * @name getPictoData
+       * @description Return format data for displaying picto on map
+       */
+      scope.getPictoData = (key) => {
+        let data = [];
+
+        for (let i = 0; i < scope.fluxData.length; i++) {
+          const datum = {
+            value: scope.expensesData[i][key],
+            posX: scope.fluxData[i].posX,
+            posy: scope.fluxData[i].posY
+          }
+          data.push(datum);
+        }
+        console.log(data);
+        return data;
+      }
 
       /**
        * @method
@@ -105,12 +110,12 @@ function map($rootScope, $timeout, StatsService) {
        * @description Change color of contry based on tourism data
        */
       scope.colorateMap = () => {
-        for (let i = 0; i < fluxData.length; i++) {
-            const name = fluxData[i].name;
-            const number = fluxData[i].number;
-            const opacity = fluxData[i].number / 994288;
-            const h = (fluxData[i].number / 994288) * 20 + 165;
-            const s = (fluxData[i].number / 994288) * 20 + 85 + '%'  ;
+        for (let i = 0; i < scope.fluxData.length; i++) {
+            const name = scope.fluxData[i].name;
+            const number = scope.fluxData[i].number;
+            const opacity = scope.fluxData[i].number / 994288;
+            const h = (scope.fluxData[i].number / 994288) * 20 + 165;
+            const s = (scope.fluxData[i].number / 994288) * 20 + 85 + '%'  ;
             scope.mapGroundStyle[name] = {
               fill: 'hsla(' + h +  ',' + s + ',   26%, 1)'
             };

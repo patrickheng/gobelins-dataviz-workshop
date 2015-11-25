@@ -1,37 +1,51 @@
-{
-  "Allemagne": {
+[
+  {
+    "name" : "Allemagne",
     "number": 561352,
-    "posX": 0,
-    "posY": 0
+    "posX": 14.8,
+    "posY": 31.7,
+    "distance": 783
   },
-  "Belgique": {
+  {
+    "name": "Belgique",
     "number": 287222,
-    "posX": 0,
-    "posY": 0
+    "posX": 12,
+    "posY": 31,
+    "distance": 296
   },
-  "Chine": {
+  {
+    "name": "Chine",
     "number": 257379,
-    "posX": 0,
-    "posY": 0
+    "posX": 61.5,
+    "posY": 42.5,
+    "distance": 8213
   },
-  "RoyaumeUni": {
+  {
+    "name": "RoyaumeUni",
     "number": 994288,
-    "posX": 0,
-    "posY": 0
+    "posX": 7.7,
+    "posY": 28.6,
+    "distance": 1058
   },
-  "Japon": {
+  {
+    "name": "Japon",
     "number": 478399,
-    "posX": 0,
-    "posY": 0
+    "posX": 80.5,
+    "posY": 40,
+    "distance": 9711
   },
-  "MoyenOrient": {
+  {
+    "name": "MoyenOrient",
     "number": 461376,
-    "posX": 0,
-    "posY": 0
+    "posX": 31.5,
+    "posY": 47,
+    "distance": 4634
   },
-  "Russie": {
+  {
+    "name": "Russie",
     "number": 295761,
-    "posX": 0,
-    "posY": 0
+    "posX": 50,
+    "posY": 20,
+    "distance": 5974
   }
-}
+]

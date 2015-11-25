@@ -43,12 +43,13 @@
       stroke: $color-dark-blue;
       stroke-width: 0.5;
       opacity: 0;
-      &--FRA {
-        cursor: default!important;
-        &:hover {
-          fill: $color-white;
-          opacity: 1;
-        }
+    }
+    .map-ground--FRA {
+      cursor: default!important;
+      fill: $color-white;
+      &:hover {
+        fill: $color-white;
+        opacity: 1;
       }
     }
     .map-active-state {
