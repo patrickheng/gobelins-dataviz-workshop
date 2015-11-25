@@ -8,6 +8,7 @@
   color: $color-white;
   z-index: 100;
   transform-origin: top left;
+  transition: all 0.5s ease-out;
 
   .title-container {
     overflow: hidden;
@@ -38,7 +39,7 @@
     font-size: 4.5rem;
     height: 9rem;
     line-height: 9rem;
-    transition: all 0.3s ease-out;
+    transition: color 0s ease-out 0.4s;
   }
   strong {
     &:before, &:after {
@@ -56,6 +57,9 @@
     &:after {
       right:0;
     }
+  }
+  &--is-centered {
+    // transform: translate3d(-50%,-50%,0);
   }
   &--flux {
     h1 {
@@ -123,7 +127,11 @@
 	.home-page {
 	  .home-title {
 	    transform: scale(0.85);
+      &--is-centered {
+        transform: scale(0.6);
+      }
 	  }
+
 	}
 }
 @media only screen and (max-width: 1400px) {
@@ -132,6 +140,9 @@
 	    transform: scale(0.7);
 			top: 5rem;
 			left: 4rem;
+      &--is-centered {
+        transform: scale(0.5);
+      }
 	  }
 	}
 }

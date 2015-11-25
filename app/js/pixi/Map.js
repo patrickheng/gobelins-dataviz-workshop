@@ -1,6 +1,5 @@
 import Scene from './scene';
 import raf from 'raf';
-import 'gsap';
 import {
     Graphics, Sprite, Container
 }

@@ -11,7 +11,7 @@ function OnConfig($stateProvider, $locationProvider, $urlRouterProvider, $compil
     url: '/',
     controller: 'HomeCtrl as home',
     templateUrl: 'home.html',
-    title: 'Home'
+    title: 'Les touristes à Paris'
   });
 
   $urlRouterProvider.otherwise('/');

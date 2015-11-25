@@ -1,7 +1,6 @@
 import EmitterBase from './EmitterBase';
 import NumberUtils from './utils/number-utils';
 import Particle from'./Particle';
-import 'gsap';
 
 export default class ParticlesEmitter extends EmitterBase {
 

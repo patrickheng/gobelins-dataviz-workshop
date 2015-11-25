@@ -1,5 +1,4 @@
 'use strict';
-import 'gsap';
 import PixiMap from '../pixi/Map';
 
 /**
