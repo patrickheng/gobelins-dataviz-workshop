@@ -8,6 +8,7 @@ function HomeCtrl($scope, $rootScope, $timeout) {
   // ViewModel
   const vm = this;
 
+  // PointerEventsPolyfill.initialize({});
 
   /**
    * @method

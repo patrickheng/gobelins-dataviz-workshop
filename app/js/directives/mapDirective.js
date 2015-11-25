@@ -21,11 +21,16 @@ function map($rootScope, StatsService) {
 
       scope.mapIsInit = false;
       scope.isRetracted = false;
+      scope.mapGroundStyle = {};
+      scope.mapGroundGroupStyle = {};
+
+      const fluxData = StatsService.getFlux();
+      const expensesData = StatsService.getExpenses();
 
       const mapGround = element[0].querySelectorAll('.map--below .map-ground');
       const pixiOptions =  {
-        flux: StatsService.getFlux(),
-        expenses: StatsService.getExpenses()
+        flux: fluxData,
+        expenses: expensesData
       }
 
       let pixiMap = {};
@@ -42,26 +47,46 @@ function map($rootScope, StatsService) {
 
       // Watchers
       scope.$watch('mode', (newVal) =>{
-        console.log('model change = ', newVal);
         if(newVal === "population") {
-
+          scope.initPixiMap();
+          scope.coloratePopulationMap();
+          
         }
       }, true);
 
       /**
        * @method
-       * @name initMap
+       * @name initPixiMap
        * @description Initialisation of gsap tl for map and create pixi canvas
        */
-      scope.initMap = () => {
+      scope.initPixiMap = () => {
         tl = new TimelineMax({onComplete: ()=> {
           scope.mapIsInit = true;
           pixiMap = new PixiMap(pixiOptions);
+          tl.kill();
+
+          scope.coloratePopulationMap();
+
           scope.$apply();
         }});
+
         tl.staggerFromTo(mapGround, 0.5, {scale:1.5, opacity:0}, { scale: 1, opacity: 1, ease: Cubic.easeOut}, 0.008);
       };
 
+
+      scope.coloratePopulationMap = () => {
+        for (let i = 0; i < fluxData.length; i++) {
+            const name = fluxData[i].name;
+            const number = fluxData[i].number;
+            const opacity = fluxData[i].number / 994288;
+            const h = (fluxData[i].number / 994288) * 20 + 165;
+            const s = (fluxData[i].number / 994288) * 20 + 85 + '%'  ;
+            console.log(h);
+            scope.mapGroundStyle[name] = {
+              fill: 'hsla(' + h +  ',' + s + ',   26%, 1)'
+            };
+          };
+      }
       /**
        * @method
        * @name selectContry
@@ -84,8 +109,6 @@ function map($rootScope, StatsService) {
         }
       };
 
-      // Initialisation
-      scope.initMap();
 
     }
   };

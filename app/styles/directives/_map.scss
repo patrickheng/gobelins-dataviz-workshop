@@ -2,6 +2,7 @@
   position: relative;
   width: 100%;
   height: 100%;
+  overflow:hidden;
   .map-wrapper-overlay {
     position: absolute;
     top:0;
@@ -45,15 +46,15 @@
     }
     .map-active-state {
       cursor: pointer;
-      fill: $color-light-blue;
+      fill: $color-white;
       & .map-ground {
-        fill: $color-light-blue;
+        fill: $color-white;
       }
     }
     &--is-init {
       .map-active-state {
         &:hover {
-          opacity: 0.8 !important;
+          opacity: 0.8;
         }
       }
     }
