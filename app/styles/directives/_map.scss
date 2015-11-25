@@ -1,28 +1,23 @@
 .map-container {
   position: relative;
-
   width: 90%;
-  margin: 4% auto 4% 8.5%;
+  margin: 0 auto 4% 8.5%;
+  top: 6%;
   .map {
     display: block;
-
     .map-ground {
       fill: $color-map-fill;
       stroke: $color-dark-blue;
       stroke-width: 0.5;
       opacity: 0;
     }
-
     .map-active-state {
       cursor: pointer;
       fill: $color-light-blue;
-
       & .map-ground {
         fill: $color-light-blue;
       }
-
     }
-
     &--is-init {
       .map-active-state {
         &:hover {
@@ -31,7 +26,6 @@
       }
     }
   }
-
   #map-canvas-container {
     position: absolute;
     top: 0;
@@ -42,8 +36,6 @@
     }
   }
 }
-
-
 @media only screen and (max-width: 767px) {
   .map-container {
     top: 50%;

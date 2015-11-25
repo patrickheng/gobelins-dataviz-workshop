@@ -15,6 +15,7 @@ function sidebar($rootScope) {
     replace: true,
 
     link: (scope, element) => {
+      
     }
   }
 }

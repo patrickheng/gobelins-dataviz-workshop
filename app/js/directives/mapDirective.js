@@ -51,36 +51,8 @@ function map($rootScope, StatsService) {
        * @description Select a specific contry
        */
       scope.selectCountry = (country) => {
-        if($rootScope.selectedCountry.indexOf(country) === -1) {
-          $rootScope.selectedCountry.push(country);
-
-          console.log($rootScope.selectedCountry);
-        } else {
-          console.log('already in array');
-        }
+        $rootScope.$broadcast('selectCountry', country);
       };
-
-      /**
-       * @method
-       * @name removeCountry
-       * @description Remove a country from selection list
-       */
-      scope.removeCountry = (country) => {
-        const index = array.indexOf(country);
-        $rootScope.selectedCountry.splice(index, 1);
-      };
-
-      /**
-       * @method
-       * @name removeAllCountries
-       * @description Remove all selected countries
-       */
-      scope.removeAllCountries = (country) => {
-        $rootScope.selectedCountry = [];
-      };
-
-
-
 
       // Initialisation
       scope.initMap();

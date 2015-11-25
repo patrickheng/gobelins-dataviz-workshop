@@ -1,3 +1,36 @@
 .country-selection {
-  
+
+  .country-selection-list {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+
+    .country-selected {
+      cursor: pointer;
+      color: $color-white;
+    }
+  }
+
+
+  .country-selection-button {
+    position: absolute;
+    bottom : 20px;
+    right: 20px;
+    z-index: 2;
+    background: blue;
+    color: white;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.5s ease-out;
+    &--learn-more {
+      transform: translateX(100px) scale(1.5);
+    }
+    &--compare {
+      transform: translateY(100px) scale(1.5);
+    }
+    &--show {
+      transform: none;
+      opacity: 1;
+    }
+  }
 }
