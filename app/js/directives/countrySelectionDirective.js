@@ -7,7 +7,7 @@
  * @module app
  * @restrict E
  */
-function countrySelection($rootScope) {
+function countrySelection($rootScope, $timeout) {
 
   return {
     restrict: 'E',
@@ -22,8 +22,9 @@ function countrySelection($rootScope) {
         scope.selectContry(arg);
       });
       scope.$on('removeAllCountries', () => {
-        scope.removeCountry();
+        scope.removeAllCountries();
       });
+
 
       // Watchers
       $rootScope.$watch('selectedCountry', (newVal, oldVal) => {
@@ -70,10 +71,20 @@ function countrySelection($rootScope) {
        * @name removeAllCountries
        * @description Remove all selected countries
        */
-      scope.removeAllCountries = (country) => {
-        $rootScope.selectedCountry = [];
+      scope.removeAllCountries = () => {
+        $timeout(()=> {
+          $rootScope.selectedCountry = [];
+        }, 1000);
       };
 
+      /**
+       * @method
+       * @name showSideBar
+       * @description Show sidebar
+       */
+      scope.showSidebar = () => {
+        $rootScope.$broadcast('showSidebar');
+      };
 
     }
   }

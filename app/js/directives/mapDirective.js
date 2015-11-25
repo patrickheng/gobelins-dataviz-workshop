@@ -20,6 +20,7 @@ function map($rootScope, StatsService) {
       scope.mode = 'population';
 
       scope.mapIsInit = false;
+      scope.isRetracted = false;
 
       const mapGround = element[0].querySelectorAll('.map--below .map-ground');
       const pixiOptions =  {
@@ -29,6 +30,16 @@ function map($rootScope, StatsService) {
 
       let pixiMap = {};
       let tl = {};
+
+
+      // Listeners
+      scope.$on('showSidebar', (ev, arg) => {
+        scope.isRetracted = true;
+      });
+      scope.$on('hideSidebar', (ev, arg) => {
+        scope.isRetracted = false;
+      });
+
 
       /**
        * @method
@@ -51,7 +62,20 @@ function map($rootScope, StatsService) {
        * @description Select a specific contry
        */
       scope.selectCountry = (country) => {
-        $rootScope.$broadcast('selectCountry', country);
+        if(!scope.isRetracted) {
+          $rootScope.$broadcast('selectCountry', country);
+        }
+      };
+
+      /**
+       * @method
+       * @name hideSidebar
+       * @description On click on the map hide sidebar
+       */
+      scope.hideSidebar = () => {
+        if(scope.isRetracted) {
+          $rootScope.$broadcast('hideSidebar');
+        }
       };
 
       // Initialisation

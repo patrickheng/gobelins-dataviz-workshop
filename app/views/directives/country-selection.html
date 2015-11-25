@@ -3,6 +3,11 @@
     <li class="country-selected" ng-repeat="country in selectedCountry" ng-click="removeCountry($event)" data-country="{{country}}">{{country}}</li>
   </ul>
   <!-- Selection button -->
-  <button class="country-selection-button country-selection-button--learn-more" ng-class="{'country-selection-button--show' : step === 'learn-more'}">En savoir plus</button>
-  <button class="country-selection-button country-selection-button--compare" ng-class="{'country-selection-button--show' : step === 'compare'}">Comparer</button>
+  <button class="country-selection-button country-selection-button--learn-more"
+          ng-class="{'country-selection-button--show' : step === 'learn-more'}"
+          ng-click="showSidebar()">En savoir plus</button>
+  <button
+          class="country-selection-button country-selection-button--compare"
+          ng-class="{'country-selection-button--show' : step === 'compare'}"
+          ng-click="showSidebar()">Comparer</button>
 </div>
