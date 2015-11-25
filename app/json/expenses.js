@@ -5,7 +5,7 @@ const expenses = [
     "restauration": 3,
     "loisirs": 5,
     "shopping": 13,
-    "transports": 17,
+    "transport": 17,
     "total": 172,
   },
   {
@@ -14,7 +14,7 @@ const expenses = [
     "restauration": 45,
     "loisirs": 3,
     "shopping": 14,
-    "transports": 9,
+    "transport": 9,
     "total": 176,
   },
   {
@@ -23,7 +23,7 @@ const expenses = [
     "restauration": 32,
     "loisirs": 19,
     "shopping": 73,
-    "transports": 11,
+    "transport": 11,
     "total": 197,
   },
   {
@@ -32,7 +32,7 @@ const expenses = [
     "restauration": 42,
     "loisirs": 2,
     "shopping": 17,
-    "transports": 17,
+    "transport": 17,
     "total": 202,
   },
   {
@@ -41,7 +41,7 @@ const expenses = [
     "restauration": 38,
     "loisirs": 15,
     "shopping": 66,
-    "transports": 11,
+    "transport": 11,
     "total": 217,
   },
   {
@@ -50,7 +50,7 @@ const expenses = [
     "restauration": 38,
     "loisirs": 16,
     "shopping": 51,
-    "transports": 13,
+    "transport": 13,
     "total": 190,
   },
   {
@@ -59,7 +59,7 @@ const expenses = [
     "restauration": 41,
     "loisirs": 19,
     "shopping": 49,
-    "transports": 7,
+    "transport": 7,
     "total": 191,
   }
 ]

@@ -77,6 +77,15 @@
     }
   }
 }
+.map-pictos {
+  .map-picto {
+    position: absolute;
+    background: red;
+    pointer-events: none;
+    transform-origin: center center;
+  }
+}
+
 @media only screen and (max-width: 767px) {
   .map-container {
     top: 50%;

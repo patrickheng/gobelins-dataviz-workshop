@@ -2,14 +2,13 @@
 
 	<div class="map-wrapper-overlay" ng-click="hideSidebar()" ng-class="{'map-wrapper-overlay--is-show': isRetracted}"></div>
 
-	<!-- MAP PICTOS -->
-	<div class="map-pictos">
-		<div class="map-picto" ng-repeat="picto in pictoData">
-
-		</div>
-	</div>
-
 	<div class="map-container" ng-class="{'map-container--is-retracted': isRetracted}">
+		<!-- MAP PICTOS -->
+		<div class="map-pictos">
+			<div class="map-picto" ng-animate="'animate'" ng-style="picto" ng-repeat="picto in pictoData">
+			</div>
+		</div>
+
 		<!-- SVG -->
 		<svg version="1.1" class="map map--below" ng-class="{'map--is-init' : mapIsInit}"xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="1410 -120.1 948.5 885.6" style="enable-background:new 1410 -120.1 948.5 885.6;" xml:space="preserve">
 			<polygon class="map-ground" points="1590.9,219.5 1592.7,216.8 1594.3,214.9 1598,217.7 1598,219.5 1598,220.4 1598,222.3 1598.8,224.9 1600.7,226.7

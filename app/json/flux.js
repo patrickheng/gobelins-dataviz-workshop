@@ -10,7 +10,7 @@ const flux = [
     "name": "Belgique",
     "number": 287222,
     "posX": 12,
-    "posY": 31,
+    "posY": 32,
     "distance": 296
   },
   {
@@ -30,7 +30,7 @@ const flux = [
   {
     "name": "Japon",
     "number": 478399,
-    "posX": 80.5,
+    "posX": 80.2,
     "posY": 40,
     "distance": 9711
   },

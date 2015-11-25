@@ -30,6 +30,7 @@ function map($rootScope, $timeout, StatsService) {
       scope.mapHoverSuffix = 'visiteurs';
 
       const mapGround = element[0].querySelectorAll('.map--below .map-ground');
+
       const pixiOptions =  {
         flux: scope.fluxData,
         expenses: scope.expensesData
@@ -37,6 +38,7 @@ function map($rootScope, $timeout, StatsService) {
 
       let pixiMap = {};
       let mapTl = {};
+      let pictoTl = {};
 
       // Init
       $timeout(()=>{
@@ -56,32 +58,56 @@ function map($rootScope, $timeout, StatsService) {
         if(newVal === 'flux') {
           if(pixiMap.fluxMapTlInit) {
             pixiMap.playFluxMap();
+            scope.pictoData = {};
             scope.mapHoverSuffix = 'visiteurs';
           }
         } else {
           pixiMap.stopFluxMap();
-          scope.pictoData = scope.getPictoData(newVal);
+          scope.pictoData = scope.getPictoStyle(newVal);
           scope.mapHoverSuffix = '€';
+
+          // Animation
+          $timeout(() => {
+            const pictos = element[0].querySelectorAll('.map-picto');
+            pictoTl = new TimelineMax();
+            console.log(pictos);
+            pictoTl
+              .staggerTo(pictos, 0.5, {scale: 1, ease: Back.easeOut}, 0.2)
+          }, 100);
+
         }
       }, true);
 
       /**
        * @method
-       * @name getPictoData
-       * @description Return format data for displaying picto on map
+       * @name getPictoStyle
+       * @description Return style for displaying picto on map
        */
-      scope.getPictoData = (key) => {
+      scope.getPictoStyle = (key) => {
         let data = [];
+        let maxVal = 0;
 
-        for (let i = 0; i < scope.fluxData.length; i++) {
-          const datum = {
-            value: scope.expensesData[i][key],
-            posX: scope.fluxData[i].posX,
-            posy: scope.fluxData[i].posY
+        // Get max val
+        for (let i = 0; i < scope.expensesData.length; i++) {
+          if(maxVal < scope.expensesData[i][key]) {
+            maxVal = scope.expensesData[i][key];
           }
-          data.push(datum);
         }
-        console.log(data);
+
+        for (let i = 0; i < scope.expensesData.length; i++) {
+          const style = {
+            value: scope.expensesData[i][key],
+            top: scope.fluxData[i].posY + '%',
+            left: scope.fluxData[i].posX + '%',
+
+            transform: 'scale(0)',
+            width: (scope.expensesData[i][key] / maxVal) * 115 + 'px',
+            height: (scope.expensesData[i][key] / maxVal) * 50 + 'px',
+            background: 'url(images/home/' + key + '-icon.svg) center center no-repeat',
+            backgroundSize: 'cover',
+          }
+          data.push(style);
+        }
         return data;
       }
 
@@ -110,12 +136,20 @@ function map($rootScope, $timeout, StatsService) {
        * @description Change color of contry based on tourism data
        */
       scope.colorateMap = () => {
+        let maxVal = 0;
+        // Get the max value
+        for (let i = 0; i < scope.fluxData.length; i++) {
+          if(maxVal < scope.fluxData[i].number) {
+            maxVal = scope.fluxData[i].number;
+          }
+        }
+
         for (let i = 0; i < scope.fluxData.length; i++) {
             const name = scope.fluxData[i].name;
             const number = scope.fluxData[i].number;
-            const opacity = scope.fluxData[i].number / 994288;
-            const h = (scope.fluxData[i].number / 994288) * 20 + 165;
-            const s = (scope.fluxData[i].number / 994288) * 20 + 85 + '%'  ;
+            const opacity = scope.fluxData[i].number / maxVal;
+            const h = (scope.fluxData[i].number / maxVal) * 20 + 165;
+            const s = (scope.fluxData[i].number / maxVal) * 20 + 85 + '%'  ;
             scope.mapGroundStyle[name] = {
               fill: 'hsla(' + h +  ',' + s + ',   26%, 1)'
             };
