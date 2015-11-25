@@ -3,6 +3,38 @@
   overflow: hidden;
   box-sizing: border-box;
 
+	.title-block {
+		h1 {
+			&:before, &:after {
+				content: '';
+				position: absolute;
+				height: 2px;
+			}
+			&:before {
+
+			}
+			&:after {
+
+			}
+		}
+		h2 {
+
+		}
+		strong {
+			&:before, &:after {
+				content: '';
+				position: absolute;
+				height: 2px;
+			}
+			&:before {
+
+			}
+			&:after {
+
+			}
+		}
+	}
+
   .map-section {
     position: relative;
     width: 100%;

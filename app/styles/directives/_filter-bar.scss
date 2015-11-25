@@ -1,3 +1,95 @@
 .filter-bar {
+	position: absolute;
+	left: 50%;
+	bottom : $border-padding;
+	transform: translateX(-50%);
+	list-style: none;
+	.filter {
+		position: relative;
+		display: inline-block;
+		width: 5.5rem;
+		margin-right: 4.5rem;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		margin-right: 5rem;
+		
+		svg {
+			display: block;
+			width: 100%;
+		}
+		.filter-info {
+			position: absolute;
+			left: 50%;
+			transform: translate3d(-50%,0,0);
+			text-align: center;
+			white-space: nowrap;
+			font-size: 1.5rem;
+			padding: 5px 5px;
+			border-radius: 3px;
+			background: #ffd56a;
+			opacity: 0;
+			transition: all 0.3s ease;
+			z-index: -1;
+			pointer-events : none;
+			&:after {
+				content: '';
+				position: absolute;
+				width: 0;
+				height: 0;
+				border-style: solid;
+				top: 95%;
+				left: 50%;
+				transform: translate3d(-50%, -10px, 0);
+				border-width: 7px 7px 0 7px;
+				border-color: #ffd56a transparent transparent transparent;
+				z-index: -1;
+				transition: all 0.3s 0.1s ease;
+			}
+		}
 
+		&:hover {
+			transform: scale(1.1);
+			.filter-info {
+				opacity: 1;
+				transform: translate3d(-50%, -155%, 0) scale(0.9);
+				&:after {
+					transform: translate3d(-50%, 0px, 0);
+				}
+			}
+		}
+		&:last-child {
+			margin-right: 0;
+		}
+
+		&--tourist .filter-info {
+			background: #ffd56a;
+			&:after {
+				border-color: #ffd56a transparent transparent transparent;
+			}
+		}
+		&--restauration .filter-info {
+			background: #ff5076;
+			&:after {
+				border-color: #ff5076 transparent transparent transparent;
+			}
+		}
+		&--transport .filter-info {
+			background: #55c2ff;
+			&:after {
+				border-color: #55c2ff transparent transparent transparent;
+			}
+		}
+		&--shopping .filter-info {
+			background: #9f9dff;
+			&:after {
+				border-color: #9f9dff transparent transparent transparent;
+			}
+		}
+		&--total .filter-info {
+			background: #ffffff;
+			&:after {
+				border-color: #ffffff transparent transparent transparent;
+			}
+		}
+	}
 }
