@@ -5,7 +5,7 @@
 	<div class="map-container" ng-class="{'map-container--is-retracted': isRetracted}">
 		<!-- MAP PICTOS -->
 		<div class="map-pictos">
-			<div class="map-picto" ng-animate="'animate'" ng-style="picto" ng-repeat="picto in pictoData">
+			<div class="map-picto" ng-click="selectCountry(picto.country)" ng-animate="'animate'" ng-style="picto.style" ng-repeat="picto in pictoData">
 			</div>
 		</div>
 

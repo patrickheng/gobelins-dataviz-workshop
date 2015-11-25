@@ -63,7 +63,7 @@ function map($rootScope, $timeout, StatsService) {
           }
         } else {
           pixiMap.stopFluxMap();
-          scope.pictoData = scope.getPictoStyle(newVal);
+          scope.pictoData = scope.getPictoData(newVal);
           scope.mapHoverSuffix = '€';
 
           // Animation
@@ -80,10 +80,10 @@ function map($rootScope, $timeout, StatsService) {
 
       /**
        * @method
-       * @name getPictoStyle
-       * @description Return style for displaying picto on map
+       * @name getPictoData
+       * @description Return data for displaying picto on map
        */
-      scope.getPictoStyle = (key) => {
+      scope.getPictoData = (key) => {
         let data = [];
         let maxVal = 0;
 
@@ -95,18 +95,21 @@ function map($rootScope, $timeout, StatsService) {
         }
 
         for (let i = 0; i < scope.expensesData.length; i++) {
-          const style = {
+          const datum = {
+            country: scope.expensesData[i].name,
             value: scope.expensesData[i][key],
-            top: scope.fluxData[i].posY + '%',
-            left: scope.fluxData[i].posX + '%',
+            style: {
+              top: scope.fluxData[i].posY + '%',
+              left: scope.fluxData[i].posX + '%',
 
-            transform: 'scale(0)',
-            width: (scope.expensesData[i][key] / maxVal) * 115 + 'px',
-            height: (scope.expensesData[i][key] / maxVal) * 50 + 'px',
-            background: 'url(images/home/' + key + '-icon.svg) center center no-repeat',
-            backgroundSize: 'cover',
+              transform: 'scale(0)',
+              width: (scope.expensesData[i][key] / maxVal) * 115 + 'px',
+              height: (scope.expensesData[i][key] / maxVal) * 50 + 'px',
+              background: 'url(images/home/' + key + '-icon.svg) center center no-repeat',
+              backgroundSize: 'cover'
+            }
           }
-          data.push(style);
+          data.push(datum);
         }
         return data;
       }
