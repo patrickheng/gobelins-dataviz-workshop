@@ -40,6 +40,13 @@ function map($rootScope, StatsService) {
         scope.isRetracted = false;
       });
 
+      // Watchers
+      scope.$watch('mode', (newVal) =>{
+        console.log('model change = ', newVal);
+        if(newVal === "population") {
+
+        }
+      }, true);
 
       /**
        * @method
@@ -52,7 +59,6 @@ function map($rootScope, StatsService) {
           pixiMap = new PixiMap(pixiOptions);
           scope.$apply();
         }});
-
         tl.staggerFromTo(mapGround, 0.5, {scale:1.5, opacity:0}, { scale: 1, opacity: 1, ease: Cubic.easeOut}, 0.008);
       };
 

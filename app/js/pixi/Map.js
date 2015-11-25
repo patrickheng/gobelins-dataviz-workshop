@@ -23,14 +23,29 @@ class PixiMap {
 
     this.container = document.querySelector('.map');
     this.containerBoundingBox = this.container.getBoundingClientRect();
+
+    this.startFluxMap();
+
+    // Render pixi view
+    let root = document.body.querySelector('#map-canvas-container');
+    root.appendChild(this.scene.renderer.view);
+
+    // Launch raf
+    this.addListeners();
+  }
+
+  /**
+   * @method
+   * @name startFluxMap
+   * @description Init / switch to flux map
+   */
+  startFluxMap() {
+    this.updateToggle = true;
     this.width = this.containerBoundingBox.width;
     this.height = this.containerBoundingBox.height;
 
-
-    // Init base classes
     this.scene = new Scene();
 
-    this.backgroundReady = false;
     this.projectIndex = 0;
     this.particlesEmitters = [];
 
@@ -38,7 +53,7 @@ class PixiMap {
       const options = {
         scene: this.scene,
         particlesNumber: Math.floor(this.flux[i].number / 2000),
-        particleTexture: '/images/pixi/man.png',
+        particleTexture: '/images/pixi/tiret.png',
         sourcePosition: {
           x: this.flux[i].posX * this.width / 100,
           y: this.flux[i].posY * this.height / 100
@@ -47,22 +62,24 @@ class PixiMap {
           x: 10.5 * this.width / 100,
           y: 33 * this.height / 100
         },
-        color: Math.random() * 0xFFFFFF
+        distance: this.flux[i].distance,
+        color: 0xFFFFFF
       }
       const pEmit = new ParticlesEmitter(options);
 
       this.particlesEmitters.push(pEmit);
+
+      this.update();
     }
-    //
+  }
 
-    // Render pixi view
-    let root = document.body.querySelector('#map-canvas-container');
-    root.appendChild(this.scene.renderer.view);
-
-
-    // Launch raf
-    this.update();
-    this.addListeners();
+  /**
+   * @method
+   * @name stopFluxMap
+   * @description stopFluxMap
+   */
+  stopFluxMap() {
+    
   }
 
   /**
@@ -85,11 +102,10 @@ class PixiMap {
     this.DELTA_TIME = Date.now() - this.LAST_TIME;
     this.LAST_TIME = Date.now();
 
-    // this.particlesEmitter.update();
-
     this.scene.render();
 
-    raf(this.update.bind(this));
+    if(this.updateToggle = true)
+      raf(this.update.bind(this));
 
   }
 

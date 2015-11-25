@@ -20,7 +20,7 @@ export default class ParticlesEmitter extends EmitterBase {
 
         this.scene = options.scene;
 
-        this.speed = 3000 / this.particulesNumber;
+        this.speed = (options.distance / this.particulesNumber) * 0.1;
 
         this.throw(Particle, options);
 
@@ -33,11 +33,11 @@ export default class ParticlesEmitter extends EmitterBase {
             .staggerTo(this.particles, this.speed,
                 {
                     bezier:[{x: this.sourcePosition.x, y: this.sourcePosition.y},
-                        {x: this.sourcePosition.x / 2, y: this.sourcePosition.y/10},
+                        // {x: this.sourcePosition.x / 2, y: this.sourcePosition.y + 3},
                         {x: this.targetPosition.x, y: this.targetPosition.y}],
-                    ease:Power1.easeOut
+                    ease: Power1.easeOut
                 }
-            , 200 / this.particulesNumber);
+            , 70 / this.particulesNumber);
     }
 
     /**

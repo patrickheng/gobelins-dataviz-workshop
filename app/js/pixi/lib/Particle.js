@@ -18,7 +18,7 @@ export default class Particle extends Sprite {
 
         this.texture = PIXI.Texture.fromImage(options.particleTexture);
         this.tint = options.color;
-        this.scale.set(options.particlesNumber / 200);
+        this.scale.set(2);
     }
 
     /**
