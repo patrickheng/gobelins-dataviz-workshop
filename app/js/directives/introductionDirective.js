@@ -2,16 +2,16 @@
 
 /**
  * @ngdoc directive
- * @name headerBar
+ * @name introduction
  * @requires
  * @module app
  * @restrict E
  */
-function headerBar($rootScope) {
+function introduction() {
 
   return {
     restrict: 'E',
-    templateUrl: 'directives/header-bar.html',
+    templateUrl: 'directives/introduction.html',
     replace: true,
 
     link: (scope, element) => {
@@ -20,6 +20,6 @@ function headerBar($rootScope) {
 }
 
 export default {
-  name: 'headerBar',
-  fn: headerBar
+  name: 'introduction',
+  fn: introduction
 };
