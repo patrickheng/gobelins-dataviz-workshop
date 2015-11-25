@@ -15,6 +15,18 @@ function filterBar($rootScope) {
     replace: true,
 
     link: (scope, element) => {
+      /**
+     * @method
+     * @name changeMapMode
+     * @description Change the mode of the mapMode
+     * @param {string} newMode - New mode selected
+     */
+     scope.changeMapMode = (newMode) => {
+       if($rootScope.mapMode !== newMode) {
+         $rootScope.mapMode = newMode;
+       }
+     }
+
     }
   }
 }

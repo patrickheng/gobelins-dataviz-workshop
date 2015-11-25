@@ -9,7 +9,7 @@ import PixiMap from '../pixi/Map';
  * @module app
  * @restrict E
  */
-function map($rootScope, StatsService) {
+function map($rootScope, $timeout, StatsService) {
 
   return {
     restrict: 'E',
@@ -17,7 +17,7 @@ function map($rootScope, StatsService) {
     replace: true,
 
     link: (scope, element) => {
-      scope.mode = 'population';
+      $rootScope.mapMode = 'flux';
 
       scope.mapIsInit = false;
       scope.isRetracted = false;
@@ -34,8 +34,12 @@ function map($rootScope, StatsService) {
       }
 
       let pixiMap = {};
-      let tl = {};
+      let mapTl = {};
 
+      // Init
+      $timeout(()=>{
+        scope.initMap();
+      },0)
 
       // Listeners
       scope.$on('showSidebar', (ev, arg) => {
@@ -46,42 +50,68 @@ function map($rootScope, StatsService) {
       });
 
       // Watchers
-      scope.$watch('mode', (newVal) =>{
-        if(newVal === "population") {
-          scope.initPixiMap();
-          scope.coloratePopulationMap();
-          
+      $rootScope.$watch('mapMode', (newVal) =>{
+        if(newVal !== 'flux') {
+          pixiMap.stopFluxMap();
+        }
+        switch (newVal) {
+          case 'flux':
+            if(pixiMap.fluxMapTlInit){
+              pixiMap.playFluxMap();
+            }
+            break;
+          case 'hebergement':
+
+            break;
+          case 'restauration':
+
+            break;
+          case 'transport':
+
+            break;
+          case 'shopping':
+
+            break;
+          case 'total':
+
+            break;
+
+          default:
+
         }
       }, true);
 
       /**
        * @method
-       * @name initPixiMap
+       * @name initMap
        * @description Initialisation of gsap tl for map and create pixi canvas
        */
-      scope.initPixiMap = () => {
-        tl = new TimelineMax({onComplete: ()=> {
+      scope.initMap = () => {
+        mapTl = new TimelineMax({paused: true, onComplete: ()=> {
           scope.mapIsInit = true;
           pixiMap = new PixiMap(pixiOptions);
-          tl.kill();
+          mapTl.kill();
 
-          scope.coloratePopulationMap();
-
-          scope.$apply();
+          scope.colorateMap();
         }});
 
-        tl.staggerFromTo(mapGround, 0.5, {scale:1.5, opacity:0}, { scale: 1, opacity: 1, ease: Cubic.easeOut}, 0.008);
+        mapTl.staggerFromTo(mapGround, 0.5, {scale:1.5, opacity:0}, { scale: 1, opacity: 1, ease: Cubic.easeOut}, 0.008);
+        scope.colorateMap();
+        mapTl.play();
       };
 
-
-      scope.coloratePopulationMap = () => {
+      /**
+       * @method
+       * @name colorateMap
+       * @description Change color of contry based on tourism data
+       */
+      scope.colorateMap = () => {
         for (let i = 0; i < fluxData.length; i++) {
             const name = fluxData[i].name;
             const number = fluxData[i].number;
             const opacity = fluxData[i].number / 994288;
             const h = (fluxData[i].number / 994288) * 20 + 165;
             const s = (fluxData[i].number / 994288) * 20 + 85 + '%'  ;
-            console.log(h);
             scope.mapGroundStyle[name] = {
               fill: 'hsla(' + h +  ',' + s + ',   26%, 1)'
             };

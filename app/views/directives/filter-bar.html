@@ -1,21 +1,25 @@
 <ul class="filter-bar">
-  <li class="filter filter--tourist">
-  	<span class="filter-info">Flux touristes</span>
-  	<img src="images/home/hebergement.svg" alt="Touristes">
+  <li class="filter filter--flux" ng-click="changeMapMode('flux')" ng-class="{'filter--active' : mapMode === 'flux'}">
+  	<span class="filter-info">Flux de touriste</span>
+  	<img src="images/home/hebergement.svg" alt="Flux de touriste">
   </li>
-  <li class="filter filter--restauration">
+  <li class="filter filter--hebergement" ng-click="changeMapMode('hebergement')" ng-class="{'filter--active' : mapMode === 'hebergement'}">
+  	<span class="filter-info">Hébergement</span>
+  	<img src="images/home/hebergement.svg" alt="Hébergement">
+  </li>
+  <li class="filter filter--restauration" ng-click="changeMapMode('restauration')" ng-class="{'filter--active' : mapMode === 'restauration'}">
   	<span class="filter-info">Restauration</span>
   	<img src="images/home/restauration.svg" alt="Restauration">
   </li>
-  <li class="filter filter--transport">
+  <li class="filter filter--transport" ng-click="changeMapMode('transport')" ng-class="{'filter--active' : mapMode === 'transport'}">
   	<span class="filter-info">Transport</span>
   	<img src="images/home/transport.svg" alt="Transport">
   </li>
-  <li class="filter filter--shopping">
+  <li class="filter filter--shopping" ng-click="changeMapMode('shopping')" ng-class="{'filter--active' : mapMode === 'shopping'}">
   	<span class="filter-info">Shopping</span>
   	<img src="images/home/shopping.svg" alt="Shopping">
   </li>
-  <li class="filter filter--total">
+  <li class="filter filter--total" ng-click="changeMapMode('total')" ng-class="{'filter--active' : mapMode === 'total'}">
   	<span class="filter-info">Dépenses total</span>
   	<img src="images/home/depensestotal.svg" alt="Dépenses total">
   </li>

@@ -1,0 +1,137 @@
+.home-title {
+  position: absolute;
+  top: 9.5rem;
+  left: 8rem;
+  width: 630px;
+  text-align: center;
+  font-size: 2.4rem;
+  color: $color-white;
+  z-index: 100;
+  transform-origin: top left;
+
+  .title-container {
+    overflow: hidden;
+  }
+  h1 {
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+    &:hover {
+      opacity: 0.7;
+    }
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      height: 2px;
+      width: 30.6%;
+      top: 1.15rem;
+      background: white;
+      transition: all 0.3s ease-out;
+    }
+    &:before {
+      left: 0;
+    }
+    &:after {
+      right:0;
+    }
+  }
+  h2 {
+    font-size: 4.5rem;
+    height: 9rem;
+    line-height: 9rem;
+    transition: all 0.3s ease-out;
+  }
+  strong {
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      height: 2px;
+      width: 44.4%;
+      bottom: 1.15rem;
+      background: white;
+      transition: all 0.3s ease-out 0.1s;
+    }
+    &:before {
+      left: 0;
+    }
+    &:after {
+      right:0;
+    }
+  }
+  &--flux {
+    h1 {
+      color: $color-flux;
+    }
+    h1, strong {
+      &:before, &:after {
+        background: $color-flux;
+      }
+    }
+  }
+  &--hebergement {
+    h1, h2, strong {
+      color: $color-hebergement;
+    }
+    h1, strong {
+      &:before, &:after {
+        background: $color-hebergement;
+      }
+    }
+  }
+  &--restauration {
+    h1, h2, strong {
+      color: $color-restauration;
+    }
+    h1, strong {
+      &:before, &:after {
+        background: $color-restauration;
+      }
+    }
+  }
+  &--transport {
+    h1, h2, strong {
+      color: $color-transport;
+    }
+    h1, strong {
+      &:before, &:after {
+        background: $color-transport;
+      }
+    }
+  }
+  &--shopping {
+    h1, h2, strong {
+      color: $color-shopping;
+    }
+    h1, strong {
+      &:before, &:after {
+        background: $color-shopping;
+      }
+    }
+  }
+  &--total {
+    h1 {
+      color: $color-total;
+    }
+    h1, strong {
+      &:before, &:after {
+        background: $color-total;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1680px) {
+	.home-page {
+	  .home-title {
+	    transform: scale(0.85);
+	  }
+	}
+}
+@media only screen and (max-width: 1400px) {
+	.home-page {
+	  .home-title {
+	    transform: scale(0.7);
+			top: 5rem;
+			left: 4rem;
+	  }
+	}
+}

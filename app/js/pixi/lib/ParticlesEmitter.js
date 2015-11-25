@@ -28,16 +28,50 @@ export default class ParticlesEmitter extends EmitterBase {
     }
 
     generateTl() {
-        this.tl = new TimelineMax({repeat: -1});
+        this.tl = new TimelineMax({repeat: -1, paused: true});
+
+        // With bezier
+        // this.tl
+        //     .staggerTo(this.particles, this.speed,
+        //         {
+        //             bezier:[{x: this.sourcePosition.x, y: this.sourcePosition.y},
+        //                 // {x: this.sourcePosition.x / 2, y: this.sourcePosition.y + 3},
+        //                 {x: this.targetPosition.x, y: this.targetPosition.y}],
+        //             ease: Power1.easeOut
+        //         }
+        //     , 70 / this.particulesNumber);
+
+        // No bezier
         this.tl
-            .staggerTo(this.particles, this.speed,
+            .staggerFromTo(this.particles, this.speed,
                 {
-                    bezier:[{x: this.sourcePosition.x, y: this.sourcePosition.y},
-                        // {x: this.sourcePosition.x / 2, y: this.sourcePosition.y + 3},
-                        {x: this.targetPosition.x, y: this.targetPosition.y}],
+                    x: this.sourcePosition.x, y: this.sourcePosition.y
+                },
+                {
+                    x: this.targetPosition.x, y: this.targetPosition.y,
                     ease: Power1.easeOut
                 }
             , 70 / this.particulesNumber);
+
+        this.tl.play();
+    }
+
+    /**
+     * @method
+     * @name playTl
+     * @description Play the gsap tl
+     */
+    playTl() {
+        this.tl.play(0);
+        console.log('play !')
+    }
+    /**
+     * @method
+     * @name stopTl
+     * @description Pause the gsap tl
+     */
+    stopTl() {
+        this.tl.pause(0);
     }
 
     /**

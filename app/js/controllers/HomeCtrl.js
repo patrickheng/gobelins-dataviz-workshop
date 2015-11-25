@@ -4,7 +4,7 @@ import PxLoader from 'pxloader-browserify';
 import '../vendors/pointer_events_polyfill';
 
 function HomeCtrl($scope, $rootScope, $timeout) {
-
+  
   // ViewModel
   const vm = this;
 

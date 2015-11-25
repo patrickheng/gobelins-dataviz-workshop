@@ -17,6 +17,7 @@ class PixiMap {
     // Calculate time
     this.DELTA_TIME = 0;
     this.LAST_TIME = Date.now();
+    this.fluxMapTlInit = false;
 
     this.flux = options.flux;
     this.expenses = options.expenses;
@@ -40,6 +41,7 @@ class PixiMap {
    * @description Init / switch to flux map
    */
   startFluxMap() {
+    this.fluxMapTlInit = true;
     this.updateToggle = true;
     this.width = this.containerBoundingBox.width;
     this.height = this.containerBoundingBox.height;
@@ -75,11 +77,27 @@ class PixiMap {
 
   /**
    * @method
+   * @name playFluxMap
+   * @description play flux map
+   */
+  playFluxMap() {
+    this.updateToggle = true;
+    for (let i = 0; i < this.particlesEmitters.length; i++) {
+      this.particlesEmitters[i].playTl();
+    }
+    this.update();
+  }
+
+  /**
+   * @method
    * @name stopFluxMap
    * @description stopFluxMap
    */
   stopFluxMap() {
-    
+    this.updateToggle = false;
+    for (let i = 0; i < this.particlesEmitters.length; i++) {
+      this.particlesEmitters[i].stopTl();
+    }
   }
 
   /**
@@ -104,7 +122,7 @@ class PixiMap {
 
     this.scene.render();
 
-    if(this.updateToggle = true)
+    if(this.updateToggle)
       raf(this.update.bind(this));
 
   }

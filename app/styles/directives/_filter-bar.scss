@@ -7,12 +7,12 @@
 	.filter {
 		position: relative;
 		display: inline-block;
-		width: 5.5rem;
-		margin-right: 4.5rem;
+		width: 5rem;
+		margin-right: 4rem;
 		cursor: pointer;
 		transition: all 0.3s ease;
 		margin-right: 5rem;
-		
+
 		svg {
 			display: block;
 			width: 100%;
@@ -61,35 +61,50 @@
 			margin-right: 0;
 		}
 
-		&--tourist .filter-info {
-			background: #ffd56a;
+		&--active {
+			animation: pulse 1.5s ease infinite;
+		}
+		&--flux .filter-info {
+			background: $color-flux;
 			&:after {
-				border-color: #ffd56a transparent transparent transparent;
+				border-color: $color-flux transparent transparent transparent;
+			}
+		}
+		&--hebergement .filter-info {
+			background: $color-hebergement;
+			&:after {
+				border-color: $color-hebergement transparent transparent transparent;
 			}
 		}
 		&--restauration .filter-info {
-			background: #ff5076;
+			background: $color-restauration;
 			&:after {
-				border-color: #ff5076 transparent transparent transparent;
+				border-color: $color-restauration transparent transparent transparent;
 			}
 		}
 		&--transport .filter-info {
-			background: #55c2ff;
+			background: $color-transport;
 			&:after {
-				border-color: #55c2ff transparent transparent transparent;
+				border-color: $color-transport transparent transparent transparent;
 			}
 		}
 		&--shopping .filter-info {
-			background: #9f9dff;
+			background: $color-shopping;
 			&:after {
-				border-color: #9f9dff transparent transparent transparent;
+				border-color: $color-shopping transparent transparent transparent;
 			}
 		}
 		&--total .filter-info {
-			background: #ffffff;
+			background: $color-total;
 			&:after {
-				border-color: #ffffff transparent transparent transparent;
+				border-color: $color-total transparent transparent transparent;
 			}
 		}
 	}
+}
+@media only screen and (max-width: 1200px) {
+	.filter-bar .filter {
+    width: 3.5rem;
+		margin-right: 1.5rem;
+  }
 }

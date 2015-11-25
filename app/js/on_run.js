@@ -6,6 +6,7 @@ function OnRun($rootScope, AppSettings) {
   $rootScope.$on('$stateChangeSuccess', (event, toState) => {
     $rootScope.pageTitle = '';
     $rootScope.selectedCountry = [];
+    $rootScope.mapMode = 'flux';
 
 
     if ( toState.title ) {
