@@ -7,6 +7,7 @@ function HomeCtrl($scope, $rootScope, $timeout) {
 
   // ViewModel
   const vm = this;
+
   $scope.landingPageIsDisplay = true;
   $scope.mapIsDisplay = false;
 
@@ -14,6 +15,7 @@ function HomeCtrl($scope, $rootScope, $timeout) {
   // Homepage init
   $timeout(()=> {
     vm.loadImages();
+    vm.introTl();
   }, 0);
 
   $scope.$on('goToMap', (ev, arg) => {
@@ -27,12 +29,11 @@ function HomeCtrl($scope, $rootScope, $timeout) {
     }});
 
     tl.to(introductionEl, 2, {y: '-100%',ease: Expo.easeOut});
+
   });
 
 
   $scope.$on('goToHome', (ev, arg) => {
-
-
     $scope.landingPageIsDisplay = true;
 
     $timeout(()=>{
@@ -43,12 +44,9 @@ function HomeCtrl($scope, $rootScope, $timeout) {
         $scope.mapIsDisplay = false;
         $scope.$apply();
       }});
-
+      vm.introTl();
       tl.fromTo(introductionEl, 1, {y: '-100%'}, {y: '0%',ease: Expo.easeOut});
     },0)
-
-
-
   });
 
 
@@ -69,6 +67,38 @@ function HomeCtrl($scope, $rootScope, $timeout) {
 
     loader.start();
   }
+
+  /**
+   * @method
+   * @name introTl
+   * @description Generate gsap tl
+   */
+  vm.introTl = ()=> {
+    TweenMax.killAll();
+
+    const tl = new TimelineMax();
+    const segway = document.querySelector('#segway');
+    const selfie = document.querySelector('#selfie-stick');
+    const iphone = document.querySelector('#iphone');
+    const iphoneSreen = document.querySelector('#iphone-screen');
+    const eifel = document.querySelector('#eifel-tower');
+    const eifelxs = document.querySelector('#eifel-tower-xs');
+    const middleIllus = document.querySelector('.middle-illus');
+    const btn = document.querySelector('#discover-button');
+
+    tl
+      .from(eifel, 1, {scale:0, opacity:0, ease: Expo.easeOut})
+      .from(eifelxs, 1, {opacity:0, ease: Expo.easeOut}, 0)
+      .from(segway, 1, {x:'-100%', opacity:0, ease: Expo.easeOut})
+      .from(selfie, 1.5, {x:'-100%', y:'-100%', opacity:0, ease: Back.easeOut}, "-=0.7")
+      .from(iphone, 1.5, {x:'100%', y:'100%', opacity:0, ease: Back.easeOut}, "-=0.7")
+      .from(iphoneSreen, 0.2, {opacity:0, ease: SteppedEase.config(5)}, "-=0.1")
+      .from(iphoneSreen, 0.2, {opacity:1, ease: SteppedEase.config(5)})
+      .from(iphoneSreen, 0.2, {opacity:0, ease: SteppedEase.config(5)})
+      .from(middleIllus, 1, {y: '100%', scale: 1.4, ease: Expo.easeOut}, "-=0.7")
+      .fromTo(btn, 1, {y: '100%', scale: 1.1}, {y: '0%', scale: 1, opacity:1, ease: Back.easeOut}, "-=0.7")
+  }
+
 }
 
 export default {

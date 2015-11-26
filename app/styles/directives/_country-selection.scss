@@ -42,31 +42,7 @@
 
 
   .country-selection-button {
-    position: absolute;
-    right : $border-padding;
-    bottom : 3.6rem;
-    z-index: 2;
-    border: 1px solid $color-white;
-    color: $color-white;
-    padding: 1rem 2rem;
-    cursor: pointer;
-    opacity: 0;
-    transition: all 0.5s ease-out;
-    font-size: 1.8rem;
-
-    &:after {
-      content: '';
-      left:0;
-      bottom:0;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      transform-origin: center bottom;
-      transform: scaleY(0);
-      background: $color-flux;
-      transition: all 0.2s ease-out;
-      z-index: -1;
-    }
+    @include ghostButton;
     &--learn-more {
       transform: translateX(100px);
     }
@@ -76,11 +52,6 @@
     &--show {
       transform: none;
       opacity: 1;
-    }
-    &:hover {
-      &:after {
-        transform: none;
-      }
     }
   }
 }

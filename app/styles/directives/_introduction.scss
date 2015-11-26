@@ -5,5 +5,264 @@
   bottom: 0;
   left: 0;
   z-index: 10000;
-  background: red;
+  background: $color-deep-dark-blue;
+}
+
+.introduction-scene {
+  position: absolute;
+  bottom:0;
+  width: 100%;
+  #eifel-tower {
+    // animation: pop 1s $ease-out-back;
+    transform-origin: -400% 100%;
+  }
+  #segway {
+    // animation: pop 0.5s $ease-out-back 0.5s backwards;
+    transform-origin: center bottom;
+  }
+  #cloud-right {
+    animation: cloud1 25s linear infinite;
+  }
+  #cloud-middle {
+    animation: cloud2 20s linear infinite;
+  }
+  #cloud-left {
+    animation: cloud3 30s linear infinite;
+  }
+}
+
+.middle-illus {
+  position: absolute;
+  bottom:0;
+  height: 85%;
+}
+
+#discover-button {
+
+  @include ghostButton;
+  bottom : 8rem;
+  z-index: 1000;
+  left: 30%;
+  bottom: 28%;
+  right: auto;
+}
+
+@keyframes pop {
+  from{
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes cloud1{
+  from, to {
+    transform: translate3d(0,0,0);
+  }
+  20% {
+    transform: translate3d(170%,0,0);
+  }
+
+  20.01% {
+    transform: translate3d(-870%,0,0)
+  }
+}
+@keyframes cloud2{
+  from, to {
+    transform: translate3d(0,0,0);
+  }
+
+  45% {
+    transform: translate3d(530%,0,0);
+  }
+
+  45.01% {
+    transform: translate3d(-670%,0,0)
+  }
+}
+@keyframes cloud3{
+  from, to {
+    transform: translate3d(0,150%,0);
+  }
+
+  80% {
+    transform: translate3d(800%,145%,0);
+  }
+
+  80.01% {
+    transform: translate3d(-870%,145%,0)
+  }
+}
+
+
+// SVG
+//
+.introduction-scene {
+  .st0 {
+      fill: #020525;
+  }
+
+  .st1 {
+      fill: #8BD8D4;
+      stroke: #020525;
+      stroke-width: 5;
+      stroke-miterlimit: 10;
+  }
+
+  .st2 {
+      fill: none;
+      stroke: #B3E5E1;
+      stroke-width: 3;
+      stroke-miterlimit: 10;
+  }
+
+  .st3 {
+      fill: none;
+      stroke: #B3E5E1;
+      stroke-width: 1.5;
+      stroke-miterlimit: 10;
+  }
+
+  .st4 {
+      fill: #020525;
+      stroke: #B3E5E1;
+      stroke-width: 2;
+      stroke-miterlimit: 10;
+  }
+
+  .st5 {
+      fill: #020525;
+      stroke: #B3E5E1;
+      stroke-width: 1.5;
+      stroke-miterlimit: 10;
+  }
+
+  .st6 {
+      fill: #B3E5E1;
+  }
+
+  .st7 {
+      fill: #F4F2F4;
+      stroke: #B3E5E1;
+      stroke-width: 2;
+      stroke-miterlimit: 10;
+  }
+
+  .st8 {
+      fill: #8BD8D4;
+  }
+
+  .st9 {
+      fill: none;
+      stroke: #B3E5E1;
+      stroke-miterlimit: 10;
+  }
+
+  .st10 {
+      fill: #020525;
+      stroke: #B3E5E1;
+      stroke-width: 3;
+      stroke-miterlimit: 10;
+  }
+
+  .st11 {
+      fill: #DCEAE9;
+  }
+
+  .st12 {
+      fill: #70A3A0;
+  }
+}
+
+.middle-illus {
+  .st0 {
+      fill: #020525;
+  }
+
+  .st1 {
+      fill: #8BD8D4;
+      stroke: #020525;
+      stroke-width: 5;
+      stroke-miterlimit: 10;
+  }
+
+  .st2 {
+      fill: none;
+      stroke: #B3E5E1;
+      stroke-width: 3;
+      stroke-miterlimit: 10;
+  }
+
+  .st3 {
+      fill: none;
+      stroke: #B3E5E1;
+      stroke-width: 1.5;
+      stroke-miterlimit: 10;
+  }
+
+  .st4 {
+      fill: #020525;
+      stroke: #B3E5E1;
+      stroke-width: 2;
+      stroke-miterlimit: 10;
+  }
+
+  .st5 {
+      fill: #020525;
+      stroke: #B3E5E1;
+      stroke-width: 1.5;
+      stroke-miterlimit: 10;
+  }
+
+  .st6 {
+      fill: #B3E5E1;
+  }
+
+  .st7 {
+      fill: #F4F2F4;
+      stroke: #B3E5E1;
+      stroke-width: 2;
+      stroke-miterlimit: 10;
+  }
+
+  .st8 {
+      fill: #8BD8D4;
+  }
+
+  .st9 {
+      fill: none;
+      stroke: #B3E5E1;
+      stroke-miterlimit: 10;
+  }
+
+  .st10 {
+      fill: #020525;
+      stroke: #B3E5E1;
+      stroke-width: 3;
+      stroke-miterlimit: 10;
+  }
+
+  .st11 {
+      fill: #DCEAE9;
+  }
+
+  .st12 {
+      font-family: 'Apercu';
+  }
+
+  .st13 {
+      font-size: 57.1889px;
+  }
+
+  .st14 {
+      fill: #70A3A0;
+  }
+
+  .st15 {
+      font-size: 21.3009px;
+  }
 }
