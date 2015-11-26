@@ -135,8 +135,16 @@ class PixiMap {
   onResize(evt) {
 
     this.containerBoundingBox = this.container.getBoundingClientRect();
-    this.width = this.containerBoundingBox.width;
-    this.height = this.containerBoundingBox.height;
+    const mapContainer = document.querySelector('.map-container');
+    if(mapContainer.classList.contains('map-container--is-retracted')) {
+      console.info('if retracted');
+      this.width = this.containerBoundingBox.width * 2;
+      this.height = this.containerBoundingBox.height * 2;
+    }
+    else {
+      this.width = this.containerBoundingBox.width;
+      this.height = this.containerBoundingBox.height;
+    }
 
     // Particules resize
     for (let i = 0; i < this.particlesEmitters.length; i++) {
