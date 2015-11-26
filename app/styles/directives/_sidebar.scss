@@ -63,7 +63,7 @@
       bottom: 0;
     }
   }
-  
+
   .sidebar-graph {
     display: block;
     position: relative;
@@ -72,6 +72,8 @@
     margin:auto;
     border-left: 1px solid $color-white;
     border-bottom: 1px solid $color-white;
+    opacity:0;
+    transition: all 0.3s ease;
     &:after {
       content: '';
       display: table;
@@ -80,26 +82,72 @@
       height: 1px;
     }
     .country-graph {
-      width: 95%;
+      position: relative;
+      width: 90%;
+
+      img {
+        width: 40px;
+        position: absolute;
+        top: 53%;
+        transform: translate3d(-135%,-50%,0);
+        transition: all 0.4s ease;
+      }
       .country-graph-bar {
+        position: relative;
         height: 100%;
         width: 25%;
         float: left;
         background: $color-white;
-
-        &--hebergement {
-            background: $color-hebergement;
+        &:hover {
+          .country-graph-bar-details {
+            opacity: 1;
+            transform: translate3d(-50%,-72px,0);
+            transition-delay: 0s;
+          }
         }
-        &--restauration {
-            background: $color-restauration;
-        }
-        &--transport {
-            background: $color-transport;
-        }
-        &--shopping {
-            background: $color-shopping;
-        }
+        @include backgroundModifier;
       }
+      .country-graph-bar-details {
+        position: absolute;
+        display: inline-block;
+        left: 50%;
+        padding: 5px 20px;
+        text-align: center;
+        font-size: 1.8rem;
+        line-height: 2.4rem;
+        border-radius: 0.2rem;
+        opacity: 0;
+        transform: translate3d(-50%,0,0);
+        transition: all 0.3s ease;
+        z-index: 1000;
+        pointer-events: none;
+        border: 1px solid $color-white;
+        &:after {
+  				content: '';
+  				position: absolute;
+  				width: 0;
+  				height: 0;
+  				border-style: solid;
+  				top: 117%;
+  				left: 50%;
+  				transform: translate3d(-50%, -10px, 0);
+  				border-width: 7px 7px 0 7px;
+  				z-index: -1;
+  				transition: transform 0.3s ease, opacity 0.2s ease 0.1s;
+  			}
+
+        @include backgroundModifier;
+      }
+    }
+    .sidebar-graph-total {
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      margin-left: 20px;
+      width: 200px;
+      display: block;
+      color: #FFFFFF;
+      font-size: 2rem;
     }
     .sidebar-graph-scale {
       position: absolute;
@@ -113,7 +161,7 @@
         left: 0;
       }
       &--max {
-        left: 95%;
+        left: 90%;
         &:after {
           content :'';
           position: absolute;
@@ -126,12 +174,40 @@
         }
       }
     }
-    
-    
+  }
+  .sidebar-graph-indicator {
+    position: absolute;
+    color: white;
+    font-style: italic;
+    font-size: 1.4rem;
+    text-align: center;
+    top: 100%;
+    left: 50%;
+    -webkit-filter: blur(0);
+    transform: translate3d(-50%, 20px,0);
+  }
+
+  .sidebar-graph-legends {
+    text-align:center;
+    margin-top: 10rem;
+    .sidebar-graph-legend {
+      display: inline-block;
+      font-size: 1.1rem;
+      margin: 0 5px 20px 5px;
+      opacity: 0;
+      transform: translateY(20px);
+      @include colorModifier;
+      transition: all 0.2s ease;
+    }
+
   }
 
   &--is-show {
     transform: none;
+    .sidebar-graph {
+      opacity: 1;
+      transition: all 0.3s ease-out 1s;
+    }
     .sidebar-title {
       &:before, &:after {
         width: 30%;
@@ -144,6 +220,64 @@
         opacity: 1;
         transition: all 0.3s ease-out 1.5s;
       }
+    }
+    .country-graph img {
+      transform: translateX(-130%);
+      transition: all 0.4s ease 1s !important;
+    }
+
+    .sidebar-graph-legends {
+      .sidebar-graph-legend {
+        opacity: 1;
+        transform: none;
+      }
+      @for $i from 0 through 5 {
+        .sidebar-graph-legend:nth-child(#{$i}) {
+          transition: all 0.2s ease 1s + 0.1 * $i;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+@media only screen and (max-width: 1600px) {
+  .sidebar .sidebar-title {
+    font-size: 2rem;
+  }
+  .sidebar .sidebar-graph .country-graph .country-graph-bar-details{
+    font-size: 1.3rem;
+    line-height: 2.1rem;
+    padding: 5px 13px;
+    transform: translate3d(-50%, -65px, 0);
+  }
+  .sidebar .sidebar-graph-legends {
+    margin-top: 7rem;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .sidebar .sidebar-graph-indicator {
+    font-size: 1.2rem;
+  }
+  .sidebar .sidebar-graph-legends {
+    margin-top: 6rem;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .sidebar {
+    .sidebar-cross {
+      width: 20px;
+      height: 20px;
+    }
+    .sidebar-title {
+      font-size: 1.5rem;
+    }
+    .sidebar-graph .country-graph img {
+      width: 25px;
     }
   }
 }

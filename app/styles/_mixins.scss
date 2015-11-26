@@ -53,7 +53,58 @@
     left: 0;
   }
 }
-
+@mixin backgroundModifier {
+  &--hebergement {
+      background: $color-hebergement;
+      &:after {
+        border-color: $color-hebergement transparent transparent transparent;
+      }
+  }
+  &--restauration {
+      background: $color-restauration;
+      &:after {
+        border-color: $color-restauration transparent transparent transparent;
+      }
+  }
+  &--transport {
+      background: $color-transport;
+      &:after {
+        border-color: $color-transport transparent transparent transparent;
+      }
+  }
+  &--shopping {
+      background: $color-shopping;
+      &:after {
+        border-color: $color-shopping transparent transparent transparent;
+      }
+  }
+}
+@mixin colorModifier {
+  &--hebergement {
+      color: $color-hebergement;
+      &:after {
+        background: $color-hebergement;
+      }
+  }
+  &--restauration {
+      color: $color-restauration;
+      &:after {
+        background: $color-restauration;
+      }
+  }
+  &--transport {
+      color: $color-transport;
+      &:after {
+        background: $color-transport;
+      }
+  }
+  &--shopping {
+      color: $color-shopping;
+      &:after {
+        background: $color-shopping;
+      }
+  }
+}
 // Responsive breakpoints
 @mixin mobile {
   @media only screen and (max-width: 767px) {

@@ -34,6 +34,15 @@ function sidebar($rootScope, StatsService) {
         'Russie': 'russe'
       }
 
+      // Listeners
+      scope.$on('showSidebar', () => {
+        scope.showSidebar();
+      });
+
+      scope.$on('hideSidebarFromMap', () => {
+        scope.hideSidebar();
+      });
+
       // Watchers
       $rootScope.$watch('selectedCountry', (newVal, oldVal) => {
 
@@ -41,19 +50,19 @@ function sidebar($rootScope, StatsService) {
         if(newVal.length === 1) {
 
           scope.sidebarTitle = "Dépense moyenne journalier d'un touriste " + nationality[$rootScope.selectedCountry[0]] + " en 2014" ;
-          
+
           scope.countryGraphStyle = {
             height: '60%',
-            paddingTop: '15%'
+            paddingTop: '13%'
           }
         }
+
         // If > one country selected
         else {
           scope.sidebarTitle = "Quel nationalité dépense le plus par jour en 2014 entre :";
 
-          const paddingTop = 20 / (newVal.length + 2);
+          const paddingTop = 20 / (newVal.length + 4.5);
           const height = 80 / (newVal.length);
-          
 
           scope.countryGraphStyle = {
             height: height + '%',
@@ -61,9 +70,12 @@ function sidebar($rootScope, StatsService) {
           }
         }
 
+        scope.generateBarData();
+      }, true);
+
+      scope.generateBarData = () => {
         // Generate bar data
         scope.selectedCountryData = [];
-        scope.selectedCountrySpendTotal = [];
         scope.maxTotal = 0;
 
         for (let i = 0; i < $rootScope.selectedCountry.length; i++) {
@@ -75,21 +87,21 @@ function sidebar($rootScope, StatsService) {
         }
 
         for (let i = 0; i < $rootScope.selectedCountry.length; i++) {
-        
           const country = findWhere(expensesData, {'name': $rootScope.selectedCountry[i]});
           const data = {
-            'hebergement': (country.hebergement / scope.maxTotal) * 100 + '%',
-            'restauration': (country.restauration / scope.maxTotal) * 100+ '%',
-            'shopping': (country.shopping / scope.maxTotal) * 100 + '%',
-            'transport': (country.transport / scope.maxTotal) * 100 + '%',
+            style: {
+              'hebergement': (country.hebergement / scope.maxTotal) * 100 + '%',
+              'restauration': (country.restauration / scope.maxTotal) * 100+ '%',
+              'shopping': (country.shopping / scope.maxTotal) * 100 + '%',
+              'transport': (country.transport / scope.maxTotal) * 100 + '%'
+            },
+            number: country
+
           }
 
-          console.log('country.total',country.total);
           scope.selectedCountryData.push(data);
-          scope.selectedCountrySpendTotal.push(country.total);
         };
-
-      }, true);
+      }
 
       // Binding escape key
       window.onkeyup = (ev) => {
@@ -99,13 +111,16 @@ function sidebar($rootScope, StatsService) {
         }
       }
 
-      // Listeners
-      scope.$on('showSidebar', (ev, arg) => {
+      /**
+       * @method
+       * @name showSidebar
+       * @description Show the sidebar and broadcast event
+       */
+      scope.showSidebar = () => {
         scope.isShow = true;
-      });
-      scope.$on('hideSidebar', () => {
-        scope.hideSidebar();
-      });
+        $rootScope.$broadcast('sidebarIsShow');
+
+      }
 
       /**
        * @method

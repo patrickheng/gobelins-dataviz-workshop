@@ -17,9 +17,9 @@ function filterBar($rootScope) {
 
       // Toggles
       scope.isHidden = false;
-      
+
       // Listeners
-      scope.$on('showSidebar', (ev, arg) => {
+      scope.$on('sidebarIsShow', (ev, arg) => {
         scope.isHidden = true;
       });
       scope.$on('hideSidebar', (ev, arg) => {

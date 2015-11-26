@@ -48,7 +48,7 @@ function map($rootScope, $timeout, StatsService) {
       },0)
 
       // Listeners
-      scope.$on('showSidebar', (ev, arg) => {
+      scope.$on('sidebarIsShow', (ev, arg) => {
         scope.isRetracted = true;
       });
       scope.$on('hideSidebar', (ev, arg) => {
@@ -182,7 +182,6 @@ function map($rootScope, $timeout, StatsService) {
 
           scope.hoveredData.flag = "url('images/flags/" + country + ".svg')";
 
-          console.log(scope.hoveredData.flag);
           scope.hoveredData.name = country.replace(/([A-Z])/g, ' $1').trim();
 
           if($rootScope.mapMode === 'flux') {
@@ -194,7 +193,7 @@ function map($rootScope, $timeout, StatsService) {
           }
 
           $timeout.cancel(scope.hoveredTimeout);
-          
+
           scope.hoveredTimeout = $timeout(()=>{
             scope.isHovered = false;
           }, 20000);
@@ -221,7 +220,7 @@ function map($rootScope, $timeout, StatsService) {
        */
       scope.hideSidebar = () => {
         if(scope.isRetracted) {
-          $rootScope.$broadcast('hideSidebar');
+          $rootScope.$broadcast('hideSidebarFromMap');
         }
       };
 

@@ -29,7 +29,7 @@ const expenses = [
     "restauration": 42,
     "shopping": 19,
     "transport": 17,
-    "total": 196,
+    "total": 202,
   },
   {
     "name": "Japon",

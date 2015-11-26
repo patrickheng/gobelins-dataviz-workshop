@@ -4,32 +4,58 @@
 	<h2 class="sidebar-title">
 		<span>{{sidebarTitle}}</span>
 	</h2>
-	
+
 	<div class="sidebar-graph">
-		<div class="country-graph" 
-			ng-repeat="country in selectedCountry" 
-			ng-style="countryGraphStyle">
+		<div class="country-graph"
+			ng-repeat="country in selectedCountry"
+			ng-style="countryGraphStyle"
+			title="{{country}}">
 
-			<div class="country-graph-bar country-graph-bar--hebergement" 
-				ng-style="{width : selectedCountryData[$index].hebergement}">
+			<img ng-src="images/flags/{{country}}.svg" alt="drappeau {{country}}">
 
+			<div class="country-graph-bar country-graph-bar--hebergement"
+				ng-style="{width : selectedCountryData[$index].style.hebergement}">
+				<div class="country-graph-bar-details country-graph-bar-details--hebergement">
+					<h3>Hébergement</h3>
+					<p>{{selectedCountryData[$index].number.hebergement}}€</p>
+				</div>
 			</div>
-			<div class="country-graph-bar country-graph-bar--restauration" 
-				ng-style="{width : selectedCountryData[$index].restauration}">
+			<div class="country-graph-bar country-graph-bar--restauration"
+				ng-style="{width : selectedCountryData[$index].style.restauration}">
+				<div class="country-graph-bar-details country-graph-bar-details--restauration">
+					<h3>Restauration</h3>
+					<p>{{selectedCountryData[$index].number.restauration}}€</p>
+				</div>
 			</div>
-			<div class="country-graph-bar country-graph-bar--shopping" 
-				ng-style="{width : selectedCountryData[$index].shopping}">
+			<div class="country-graph-bar country-graph-bar--shopping"
+				ng-style="{width : selectedCountryData[$index].style.shopping}">
+				<div class="country-graph-bar-details country-graph-bar-details--shopping">
+					<h3>Shopping</h3>
+					<p>{{selectedCountryData[$index].number.shopping}}€</p>
+				</div>
 			</div>
-			<div class="country-graph-bar country-graph-bar--transport" 
-				ng-style="{width : selectedCountryData[$index].transport}">
+			<div class="country-graph-bar country-graph-bar--transport"
+				ng-style="{width : selectedCountryData[$index].style.transport}">
+				<div class="country-graph-bar-details country-graph-bar-details--transport">
+					<h3>Transport</h3>
+					<p>{{selectedCountryData[$index].number.transport}}€</p>
+				</div>
+				<span class="sidebar-graph-total">{{selectedCountryData[$index].number.total}} €</span>
 			</div>
-			<span class="sidebar-graph-total">{{selectedCountrySpendTotal[$index]}} €</span>
 		</div>
 
-		
-		
 		<span class="sidebar-graph-scale sidebar-graph-scale--origin">0</span>
 		<span class="sidebar-graph-scale sidebar-graph-scale--max">{{maxTotal}}</span>
+
+		<span class="sidebar-graph-indicator">Survolez les barres pour plus de details</span>
 	</div>
+
+	<ul class="sidebar-graph-legends">
+		<li class="sidebar-graph-legend sidebar-graph-legend--hebergement">Hébergement</li>
+		<li class="sidebar-graph-legend sidebar-graph-legend--restauration">Restauration</li>
+		<li class="sidebar-graph-legend sidebar-graph-legend--shopping">Shopping</li>
+		<li class="sidebar-graph-legend sidebar-graph-legend--transport">Transport</li>
+	</ul>
+
 
 </div>
