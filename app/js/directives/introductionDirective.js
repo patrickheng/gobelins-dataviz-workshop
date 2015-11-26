@@ -7,7 +7,7 @@
  * @module app
  * @restrict E
  */
-function introduction() {
+function introduction($rootScope) {
 
   return {
     restrict: 'E',
@@ -15,6 +15,10 @@ function introduction() {
     replace: true,
 
     link: (scope, element) => {
+
+      scope.goToMap = () => {
+        $rootScope.$broadcast('goToMap');
+      }
     }
   };
 }

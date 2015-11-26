@@ -1,18 +1,18 @@
 <div class="page home-page">
 
-  <section class="introduction-section">
+  <section class="introduction-section" ng-if="landingPageIsDisplay">
     <!-- Landing section -->
     <introduction></introduction>
   </section>
 
-  <section class="map-section">
+  <section class="map-section" ng-if="mapIsDisplay">
 
     <!-- Home title -->
     <home-title></home-title>
 
     <!-- Map -->
     <map></map>
-    
+
 
     <!-- Country selection bar -->
     <country-selection></country-selection>

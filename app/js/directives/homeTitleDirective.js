@@ -40,6 +40,10 @@ function homeTitle($rootScope) {
         scope.isCentered = false;
       });
 
+      scope.goToHome = () => {
+        $rootScope.$broadcast('goToHome');
+      }
+
       $rootScope.$watch('mapMode', (newVal,oldVal)=>{
         console.log(newVal);
         titleChangeTL.kill();

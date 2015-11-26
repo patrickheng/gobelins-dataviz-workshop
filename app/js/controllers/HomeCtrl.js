@@ -7,14 +7,50 @@ function HomeCtrl($scope, $rootScope, $timeout) {
 
   // ViewModel
   const vm = this;
+  $scope.landingPageIsDisplay = true;
+  $scope.mapIsDisplay = false;
 
-  // PPE Polyfill
-  // PointerEventsPolyfill.initialize({});
 
   // Homepage init
   $timeout(()=> {
     vm.loadImages();
   }, 0);
+
+  $scope.$on('goToMap', (ev, arg) => {
+    const introductionEl = document.querySelector('.introduction');
+
+    $scope.mapIsDisplay = true;
+
+    const tl = new TimelineMax({onComplete: ()=>{
+      $scope.landingPageIsDisplay = false;
+      $scope.$apply();
+    }});
+
+    tl.to(introductionEl, 2, {y: '-100%',ease: Expo.easeOut});
+  });
+
+
+  $scope.$on('goToHome', (ev, arg) => {
+
+
+    $scope.landingPageIsDisplay = true;
+
+    $timeout(()=>{
+      TweenMax.killAll();
+      const introductionEl = document.querySelector('.introduction');
+
+      const tl = new TimelineMax({onComplete: ()=>{
+        $scope.mapIsDisplay = false;
+        $scope.$apply();
+      }});
+
+      tl.fromTo(introductionEl, 1, {y: '-100%'}, {y: '0%',ease: Expo.easeOut});
+    },0)
+
+
+
+  });
+
 
 
   /**
