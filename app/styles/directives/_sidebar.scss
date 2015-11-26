@@ -26,7 +26,124 @@
     }
   }
 
+  .sidebar-title {
+    position: relative;
+    display: block;
+    font-size: 2.3rem;
+    text-align: center;
+    width: 90%;
+    margin: 10rem auto 4rem auto;
+    padding: 3rem 0;
+    color: $color-pop-light-blue;
+    text-align: center;
+    overflow: hidden;
+    span {
+      display:inline-block;
+      transform: translateY(60px);
+      opacity: 0;
+      transition: all 0.3s ease-in;
+    }
+    &:before,&:after {
+      content:'';
+      position: absolute;
+      display: blocks;
+      height: 1px;
+      width: 0%;
+      background: $color-white;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      opacity: 0;
+      transition: all 0.3s ease-out;
+    }
+    &:before {
+      top: 0;
+    }
+    &:after {
+      bottom: 0;
+    }
+  }
+  
+  .sidebar-graph {
+    display: block;
+    position: relative;
+    width: 80%;
+    height: 50vh;
+    margin:auto;
+    border-left: 1px solid $color-white;
+    border-bottom: 1px solid $color-white;
+    &:after {
+      content: '';
+      display: table;
+      clear: both;
+      width: 100%;
+      height: 1px;
+    }
+    .country-graph {
+      width: 95%;
+      .country-graph-bar {
+        height: 100%;
+        width: 25%;
+        float: left;
+        background: $color-white;
+
+        &--hebergement {
+            background: $color-hebergement;
+        }
+        &--restauration {
+            background: $color-restauration;
+        }
+        &--transport {
+            background: $color-transport;
+        }
+        &--shopping {
+            background: $color-shopping;
+        }
+      }
+    }
+    .sidebar-graph-scale {
+      position: absolute;
+      top: 100%;
+      transform: translate(-50%);
+      margin-top: 1.5rem;
+      font-size : 2rem;
+      color: $color-white;
+
+      &--origin {
+        left: 0;
+      }
+      &--max {
+        left: 95%;
+        &:after {
+          content :'';
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translate3d(-50%, -25px, 0);
+          width: 1px;
+          height: 10px;
+          background: $color-white;
+        }
+      }
+    }
+    
+    
+  }
+
   &--is-show {
     transform: none;
+    .sidebar-title {
+      &:before, &:after {
+        width: 30%;
+        opacity: 0.8;
+        transform: translateX(-50%);
+        transition: all 0.3s ease-out 1s;
+      }
+      span {
+        transform: none;
+        opacity: 1;
+        transition: all 0.3s ease-out 1.5s;
+      }
+    }
   }
 }

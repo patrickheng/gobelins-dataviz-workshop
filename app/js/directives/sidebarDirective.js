@@ -16,7 +16,8 @@ function sidebar($rootScope) {
 
     link: (scope, element) => {
       scope.isShow = false;
-      
+      scope.countryGraphStyle = {};
+
       const nationality = {
         'Allemagne': 'allemand',
         'Belgique': 'belge',
@@ -32,9 +33,25 @@ function sidebar($rootScope) {
    
         if(newVal.length === 1) {
 
-          scope.sidebarTitle = "Dépense moyenne journalier d'un touriste " + nationality[$rootScope.selectedCountry[0]];
+          scope.sidebarTitle = "Dépense moyenne journalier d'un touriste " + nationality[$rootScope.selectedCountry[0]] + " en 2014" ;
+          
+          scope.countryGraphStyle = {
+            height: '60%',
+            paddingTop: '15%'
+          }
+
+          scope.$apply();
         } else {
-          scope.sidebarTitle = "Quel nationalité de touriste dépense le plus par jour entre :";
+          scope.sidebarTitle = "Quel nationalité dépense le plus par jour en 2014 entre :";
+
+          const paddingTop = 20 / (newVal.length + 2);
+          const height = 80 / (newVal.length);
+          
+
+          scope.countryGraphStyle = {
+            height: height + '%',
+            paddingTop: paddingTop + '%'
+          }
         }
       }, true);
 

@@ -194,6 +194,7 @@ function map($rootScope, $timeout, StatsService) {
           }
 
           $timeout.cancel(scope.hoveredTimeout);
+          
           scope.hoveredTimeout = $timeout(()=>{
             scope.isHovered = false;
           }, 20000);
