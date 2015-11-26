@@ -72,7 +72,6 @@ function map($rootScope, $timeout, StatsService) {
           $timeout(() => {
             const pictos = element[0].querySelectorAll('.map-picto');
             pictoTl = new TimelineMax();
-            console.log(pictos);
             pictoTl
               .staggerTo(pictos, 0.5, {scale: 1, ease: Back.easeOut}, 0.2)
           }, 100);
@@ -181,7 +180,7 @@ function map($rootScope, $timeout, StatsService) {
         if(!scope.isRetracted) {
           scope.isHovered = true;
 
-          scope.hoveredData.flag = 'url(images/flags/' + country + '.svg)';
+          scope.hoveredData.flag = "url('images/flags/" + country + ".svg')";
 
           console.log(scope.hoveredData.flag);
           scope.hoveredData.name = country.replace(/([A-Z])/g, ' $1').trim();
@@ -196,7 +195,7 @@ function map($rootScope, $timeout, StatsService) {
 
           $timeout.cancel(scope.hoveredTimeout);
           scope.hoveredTimeout = $timeout(()=>{
-            scope.isHovered = false;
+            scope.isHovered = true;
           }, 20000);
         }
       };
@@ -209,7 +208,7 @@ function map($rootScope, $timeout, StatsService) {
       scope.onMouseLeave = () => {
         if(!scope.isRetracted) {
           $timeout.cancel(scope.hoveredTimeout);
-          scope.isHovered = false;
+          scope.isHovered = true;
         }
       };
 

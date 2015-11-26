@@ -2,8 +2,16 @@
 	position: absolute;
 	left: 50%;
 	bottom : $border-padding;
-	transform: translateX(-50%);
+	transform: translate3d(-50%,0,0);
 	list-style: none;
+	transition: all 0.3s ease 0.3s;
+
+	&--is-hidden {
+		opacity : 0;
+		transform: translate3d(-50%,0,0);
+		transition: all 0.3s ease;	
+	}
+
 	.filter {
 		position: relative;
 		display: inline-block;

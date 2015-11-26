@@ -14,6 +14,19 @@ function filterBar($rootScope) {
     replace: true,
 
     link: (scope, element) => {
+
+      // Toggles
+      scope.isHidden = false;
+      
+      // Listeners
+      scope.$on('showSidebar', (ev, arg) => {
+        scope.isHidden = true;
+      });
+      scope.$on('hideSidebar', (ev, arg) => {
+        scope.isHidden = false;
+      });
+
+      // Tween
       const tl = new TimelineMax();
       const filters = element[0].querySelectorAll('.filter');
       tl.staggerFrom(filters, 0.5, {y: 100, opacity:0, ease: Back.easeOut}, 0.1, 2);
