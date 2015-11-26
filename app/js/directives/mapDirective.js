@@ -192,8 +192,6 @@ function map($rootScope, $timeout, StatsService) {
             scope.hoveredData.detail = obj[$rootScope.mapMode] + ' €';
           }
 
-
-
           $timeout.cancel(scope.hoveredTimeout);
           scope.hoveredTimeout = $timeout(()=>{
             scope.isHovered = false;

@@ -14,7 +14,11 @@
 
 		<!-- MAP PICTOS -->
 		<div class="map-pictos">
-			<div class="map-picto" ng-click="selectCountry(picto.country)" ng-animate="'animate'" ng-style="picto.style" ng-repeat="picto in pictoData">
+			<div class="map-picto"
+				ng-mouseenter="onMouseEnter(picto.country)"
+				ng-mouseleave="onMouseLeave()"
+				ng-click="selectCountry(picto.country)"
+				ng-style="picto.style" ng-repeat="picto in pictoData">
 			</div>
 		</div>
 
