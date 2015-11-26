@@ -84,6 +84,7 @@
   "dependencies": {
     "angular-animate": "^1.4.8",
     "gsap": "^1.18.0",
+    "lodash.findwhere": "^3.1.0",
     "picturefill": "^3.0.1",
     "pixi.js": "^3.0.8",
     "pxloader-browserify": "^1.0.2",

@@ -1,6 +1,6 @@
 'use strict';
 import PixiMap from '../pixi/Map';
-
+import findWhere from 'lodash.findwhere';
 /**
  * @ngdoc directive
  * @name map
@@ -27,7 +27,9 @@ function map($rootScope, $timeout, StatsService) {
       scope.fluxData = StatsService.getFlux();
       scope.expensesData = StatsService.getExpenses();
       scope.pictoData = [];
-      scope.mapHoverSuffix = 'visiteurs';
+      scope.hoveredData = [];
+      scope.isHovered = false;
+      scope.hoveredTimeout = null;
 
       const mapGround = element[0].querySelectorAll('.map--below .map-ground');
 
@@ -168,6 +170,49 @@ function map($rootScope, $timeout, StatsService) {
           $rootScope.$broadcast('selectCountry', country);
         }
       };
+
+      /**
+       * @method
+       * @name onMouseEnter
+       * @description Mouse enter on a country
+       * @param {string} country - country hovered
+       */
+      scope.onMouseEnter = (country) => {
+        if(!scope.isRetracted) {
+          scope.isHovered = true;
+
+          scope.hoveredData.flag = 'images/flags/' + country + '.svg';
+          scope.hoveredData.name = country.replace(/([A-Z])/g, ' $1').trim();
+
+          if($rootScope.mapMode === 'flux') {
+            const obj = findWhere(scope.fluxData, {'name': country})
+            scope.hoveredData.detail = obj.number + ' touristes';
+          } else {
+            const obj = findWhere(scope.expensesData, {'name': country})
+            scope.hoveredData.detail = obj[$rootScope.mapMode] + ' €';
+          }
+
+
+
+          $timeout.cancel(scope.hoveredTimeout);
+          scope.hoveredTimeout = $timeout(()=>{
+            scope.isHovered = false;
+          }, 20000);
+        }
+      };
+
+      /**
+       * @method
+       * @name onMouseLeave
+       * @description Mouse leave on a country
+       */
+      scope.onMouseLeave = () => {
+        if(!scope.isRetracted) {
+          $timeout.cancel(scope.hoveredTimeout);
+          scope.isHovered = false;
+        }
+      };
+
 
       /**
        * @method
