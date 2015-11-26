@@ -17,6 +17,16 @@
     opacity: 1;
   }
 }
+@keyframes countrySelected {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  to {
+    opacity: 1;
+  }
+}
 @keyframes pulse {
   from, to {
     transform: none;

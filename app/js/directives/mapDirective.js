@@ -130,7 +130,7 @@ function map($rootScope, $timeout, StatsService) {
           scope.colorateMap();
         }});
 
-        mapTl.staggerFromTo(mapGround, 0.5, {scale:1.5, opacity:0}, { scale: 1, opacity: 1, ease: Cubic.easeOut}, 0.008);
+        mapTl.staggerFromTo(mapGround, 0.8, {scale:1.5, opacity:0}, { scale: 1, opacity: 1, ease: Cubic.easeOut}, 0.01);
         scope.colorateMap();
         mapTl.play();
       };
@@ -181,7 +181,9 @@ function map($rootScope, $timeout, StatsService) {
         if(!scope.isRetracted) {
           scope.isHovered = true;
 
-          scope.hoveredData.flag = 'images/flags/' + country + '.svg';
+          scope.hoveredData.flag = 'url(images/flags/' + country + '.svg)';
+
+          console.log(scope.hoveredData.flag);
           scope.hoveredData.name = country.replace(/([A-Z])/g, ' $1').trim();
 
           if($rootScope.mapMode === 'flux') {

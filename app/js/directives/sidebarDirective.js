@@ -17,6 +17,14 @@ function sidebar($rootScope) {
     link: (scope, element) => {
       scope.isShow = false;
 
+      // Binding escape key
+      window.onkeyup = (ev) => {
+        if(scope.isShow && ev.keyCode == 27) {
+          scope.hideSidebar();
+          scope.$apply();
+        }
+      }
+
       // Listeners
       scope.$on('showSidebar', (ev, arg) => {
         scope.isShow = true;

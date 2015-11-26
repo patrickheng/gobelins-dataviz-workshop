@@ -1,7 +1,11 @@
 <div class="country-selection">
   <ul class="country-selection-list">
-    <li class="country-selected" ng-repeat="country in selectedCountry" ng-click="removeCountry($event)" data-country="{{country}}">{{country}}</li>
+    <li class="country-selected"
+      ng-style="{'background': 'url(images/flags/' + country + '.svg) center center'}"
+      ng-repeat="country in selectedCountry"
+      ng-click="removeCountry(country)"></li>
   </ul>
+
   <!-- Selection button -->
   <button class="country-selection-button country-selection-button--learn-more"
           ng-class="{'country-selection-button--show' : step === 'learn-more'}"

@@ -47,10 +47,6 @@ function countrySelection($rootScope, $timeout) {
       scope.selectContry = (country) => {
         if($rootScope.selectedCountry.indexOf(country) === -1) {
           $rootScope.selectedCountry.push(country);
-
-          console.log($rootScope.selectedCountry);
-        } else {
-          console.log('already in array');
         }
       };
 
@@ -58,10 +54,9 @@ function countrySelection($rootScope, $timeout) {
        * @method
        * @name removeCountry
        * @description Remove a country from selection list
+       * @param {string} country - Remove a country named by that string
        */
-      scope.removeCountry = (ev) => {
-        console.log(ev.target.attributes['data-country']);
-        const country = ev.target.attributes['data-country'];
+      scope.removeCountry = (country) => {
         const index = $rootScope.selectedCountry.indexOf(country);
         $rootScope.selectedCountry.splice(index, 1);
       };
@@ -74,7 +69,7 @@ function countrySelection($rootScope, $timeout) {
       scope.removeAllCountries = () => {
         $timeout(()=> {
           $rootScope.selectedCountry = [];
-        }, 1000);
+        }, 0);
       };
 
       /**
