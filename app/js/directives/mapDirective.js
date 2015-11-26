@@ -186,7 +186,7 @@ function map($rootScope, $timeout, StatsService) {
           scope.hoveredData.name = country.replace(/([A-Z])/g, ' $1').trim();
 
           if($rootScope.mapMode === 'flux') {
-            const obj = findWhere(scope.fluxData, {'name': country})
+            const obj = findWhere(scope.fluxData, {'name': country});
             scope.hoveredData.detail = obj.number + ' touristes';
           } else {
             const obj = findWhere(scope.expensesData, {'name': country})

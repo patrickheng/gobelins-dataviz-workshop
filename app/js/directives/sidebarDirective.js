@@ -1,5 +1,7 @@
 'use strict';
 
+import findWhere from 'lodash.findwhere';
+
 /**
  * @ngdoc directive
  * @name sidebar
@@ -7,7 +9,7 @@
  * @module app
  * @restrict E
  */
-function sidebar($rootScope) {
+function sidebar($rootScope, StatsService) {
 
   return {
     restrict: 'E',
@@ -16,7 +18,11 @@ function sidebar($rootScope) {
 
     link: (scope, element) => {
       scope.isShow = false;
+
       scope.countryGraphStyle = {};
+      scope.selectedCountryData = [];
+
+      const expensesData = StatsService.getExpenses();
 
       const nationality = {
         'Allemagne': 'allemand',
@@ -30,7 +36,8 @@ function sidebar($rootScope) {
 
       // Watchers
       $rootScope.$watch('selectedCountry', (newVal, oldVal) => {
-   
+
+        // If one country selected
         if(newVal.length === 1) {
 
           scope.sidebarTitle = "Dépense moyenne journalier d'un touriste " + nationality[$rootScope.selectedCountry[0]] + " en 2014" ;
@@ -39,9 +46,9 @@ function sidebar($rootScope) {
             height: '60%',
             paddingTop: '15%'
           }
-
-          scope.$apply();
-        } else {
+        }
+        // If > one country selected
+        else {
           scope.sidebarTitle = "Quel nationalité dépense le plus par jour en 2014 entre :";
 
           const paddingTop = 20 / (newVal.length + 2);
@@ -53,6 +60,35 @@ function sidebar($rootScope) {
             paddingTop: paddingTop + '%'
           }
         }
+
+        // Generate bar data
+        scope.selectedCountryData = [];
+        scope.selectedCountrySpendTotal = [];
+        scope.maxTotal = 0;
+
+        for (let i = 0; i < $rootScope.selectedCountry.length; i++) {
+          const obj = findWhere(expensesData, {'name': $rootScope.selectedCountry[i]});
+
+          if(scope.maxTotal < obj.total) {
+            scope.maxTotal = obj.total;
+          }
+        }
+
+        for (let i = 0; i < $rootScope.selectedCountry.length; i++) {
+        
+          const country = findWhere(expensesData, {'name': $rootScope.selectedCountry[i]});
+          const data = {
+            'hebergement': (country.hebergement / scope.maxTotal) * 100 + '%',
+            'restauration': (country.restauration / scope.maxTotal) * 100+ '%',
+            'shopping': (country.shopping / scope.maxTotal) * 100 + '%',
+            'transport': (country.transport / scope.maxTotal) * 100 + '%',
+          }
+
+          console.log('country.total',country.total);
+          scope.selectedCountryData.push(data);
+          scope.selectedCountrySpendTotal.push(country.total);
+        };
+
       }, true);
 
       // Binding escape key

@@ -10,22 +10,26 @@
 			ng-repeat="country in selectedCountry" 
 			ng-style="countryGraphStyle">
 
-			<div class="country-graph-bar country-graph-bar--hebergement">
-			</div>
+			<div class="country-graph-bar country-graph-bar--hebergement" 
+				ng-style="{width : selectedCountryData[$index].hebergement}">
 
+			</div>
 			<div class="country-graph-bar country-graph-bar--restauration" 
-				>
+				ng-style="{width : selectedCountryData[$index].restauration}">
 			</div>
 			<div class="country-graph-bar country-graph-bar--shopping" 
-				>
+				ng-style="{width : selectedCountryData[$index].shopping}">
 			</div>
 			<div class="country-graph-bar country-graph-bar--transport" 
-				>
+				ng-style="{width : selectedCountryData[$index].transport}">
 			</div>
+			<span class="sidebar-graph-total">{{selectedCountrySpendTotal[$index]}} €</span>
 		</div>
 
+		
+		
 		<span class="sidebar-graph-scale sidebar-graph-scale--origin">0</span>
-		<span class="sidebar-graph-scale sidebar-graph-scale--max">max</span>
+		<span class="sidebar-graph-scale sidebar-graph-scale--max">{{maxTotal}}</span>
 	</div>
 
 </div>
