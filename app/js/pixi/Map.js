@@ -54,14 +54,14 @@ class PixiMap {
       const options = {
         scene: this.scene,
         particlesNumber: Math.floor(this.flux[i].number / 2000),
-        particleTexture: '/images/pixi/tiret.png',
+        particleTexture: '/images/pixi/point.svg',
         sourcePosition: {
           x: this.flux[i].posX * this.width / 100,
           y: this.flux[i].posY * this.height / 100
         },
         targetPosition: {
-          x: 10.5 * this.width / 100,
-          y: 33 * this.height / 100
+          x: 10.75 * this.width / 100,
+          y: 33.4 * this.height / 100
         },
         distance: this.flux[i].distance,
         color: 0xFFFFFF

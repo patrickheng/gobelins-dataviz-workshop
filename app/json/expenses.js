@@ -2,7 +2,7 @@ const expenses = [
   {
     "name": "Allemagne",
     "hebergement": 100,
-    "restauration": 3,
+    "restauration": 37,
     "loisirs": 5,
     "shopping": 13,
     "transport": 17,

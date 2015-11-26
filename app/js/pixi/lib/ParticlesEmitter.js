@@ -62,7 +62,6 @@ export default class ParticlesEmitter extends EmitterBase {
      */
     playTl() {
         this.tl.play(0);
-        console.log('play !')
     }
     /**
      * @method

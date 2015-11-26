@@ -195,7 +195,7 @@ function map($rootScope, $timeout, StatsService) {
 
           $timeout.cancel(scope.hoveredTimeout);
           scope.hoveredTimeout = $timeout(()=>{
-            scope.isHovered = true;
+            scope.isHovered = false;
           }, 20000);
         }
       };
@@ -208,7 +208,7 @@ function map($rootScope, $timeout, StatsService) {
       scope.onMouseLeave = () => {
         if(!scope.isRetracted) {
           $timeout.cancel(scope.hoveredTimeout);
-          scope.isHovered = true;
+          scope.isHovered = false;
         }
       };
 

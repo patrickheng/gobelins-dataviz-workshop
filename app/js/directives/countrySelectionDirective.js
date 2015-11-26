@@ -28,7 +28,6 @@ function countrySelection($rootScope, $timeout) {
 
       // Watchers
       $rootScope.$watch('selectedCountry', (newVal, oldVal) => {
-        console.log('watched', newVal, oldVal)
 
         if(newVal.length <= 0) {
           scope.step = "no-selection";

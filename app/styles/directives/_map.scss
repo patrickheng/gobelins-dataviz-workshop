@@ -14,6 +14,7 @@
     transition: opacity 1s ease;
     opacity: 0;
     background: rgba(0,0,0,.3);
+
     &--is-show {
       height: 100%;
       opacity: 1;
@@ -28,6 +29,7 @@
   margin: 0 auto 4% 8.5%;
   transition: all 0.6s ease 0.3s;
   transform-origin: top left;
+
   &--is-retracted {
     top: 50%;
     margin: 0 auto 0 2.5%;
@@ -80,7 +82,7 @@
     cursor: pointer;
     transition: filter 0.3s ease;
     transform-origin: center center;
-    &:hover {
+      &:hover {
       filter:saturate(10%);
     }
   }
@@ -97,6 +99,7 @@
   transform: translateX(-100px);
   opacity: 0;
   transition: transform 0.8s ease, opacity 0.4s ease;
+
   .map-hover-flag {
     float: left;
     width: 50px;
@@ -106,8 +109,9 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+    opacity: 0;
     transform: scale(0);
-    transition: all 0.2s ease 0.3s;
+    transition: opacity 0.2s ease 0.3s, transform 0.2s ease 0.1s;
   }
   .map-hover-detail-content {
     float: left;

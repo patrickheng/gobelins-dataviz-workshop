@@ -1,0 +1,32 @@
+.sidebar {
+  position:absolute;
+  width: 50%;
+  height: 100%;
+  top:0;
+  right: 0%;
+  transform: translateX(100%);
+  transition: all 1s ease-out 0.1s;
+  background: $color-deep-dark-blue;
+  border-left: 1px solid rgba(255,255,255,0.1);
+  z-index: 100;
+
+  .sidebar-cross {
+    position: absolute;
+    top: 5rem;
+    right: 5rem;
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: url('../images/home/cross.svg') center center;
+    background-size: cover;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    &:hover {
+      transform: rotate(90deg);
+    }
+  }
+
+  &--is-show {
+    transform: none;
+  }
+}
