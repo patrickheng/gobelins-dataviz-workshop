@@ -12,7 +12,7 @@ We have four days to imagine, design and develop a data visualization on the the
 #### TEAM
 | Nom |  Role |
 | ------------- | ------------- |
-| Jantana Henard  | Webdesigner |
+| Jantana Hennard  | Webdesigner |
 | Patrick Heng  | Front developer |
 
 #### TECHNOLOGIES
