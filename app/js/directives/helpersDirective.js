@@ -27,6 +27,7 @@ function helpers($rootScope, $timeout) {
 
       scope.removeHelpers = () => {
         scope.helpersToggle = false;
+        scope.$apply();
       }
     }
   }

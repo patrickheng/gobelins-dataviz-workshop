@@ -98,6 +98,7 @@
         width: 25%;
         float: left;
         background: $color-white;
+        transform-origin: center left;
         &:hover {
           .country-graph-bar-details {
             opacity: 1;

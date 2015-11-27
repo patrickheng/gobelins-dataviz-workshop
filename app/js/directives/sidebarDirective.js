@@ -9,7 +9,7 @@ import findWhere from 'lodash.findwhere';
  * @module app
  * @restrict E
  */
-function sidebar($rootScope, StatsService) {
+function sidebar($rootScope,$timeout, StatsService) {
 
   return {
     restrict: 'E',
@@ -119,6 +119,17 @@ function sidebar($rootScope, StatsService) {
       scope.showSidebar = () => {
         scope.isShow = true;
         $rootScope.$broadcast('sidebarIsShow');
+
+
+        $timeout(()=>{
+          const graphBars = document.querySelectorAll('.country-graph-bar');
+          const graphBarsTotal = document.querySelectorAll('.sidebar-graph-total');
+          const tl = new TimelineMax();
+
+          tl
+            .staggerFrom(graphBars, 1, {opacity:0, ease: Power2.easeOut}, 0.2, 0.5)
+            .from(graphBarsTotal, 0.6, {opacity: 0, x: '-10', ease: Expo.easeOut});
+        },10)
 
       }
 
