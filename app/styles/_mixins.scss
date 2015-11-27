@@ -110,6 +110,36 @@
       }
   }
 }
+@mixin backgroundPatternModifier {
+  &--hebergement {
+      background: url(../images/charts/hebergement.svg) left bottom repeat-x $color-hebergement;
+      background-size: cover;
+      &:after {
+        border-color: $color-hebergement transparent transparent transparent;
+      }
+  }
+  &--restauration {
+      background: url(../images/charts/restauration.svg) left bottom repeat-x $color-restauration;
+      background-size: cover;
+      &:after {
+        border-color: $color-restauration transparent transparent transparent;
+      }
+  }
+  &--transport {
+      background: url(../images/charts/transport.svg) left bottom repeat-x $color-transport;
+      background-size: cover;
+      &:after {
+        border-color: $color-transport transparent transparent transparent;
+      }
+  }
+  &--shopping {
+      background: url(../images/charts/shopping.svg) left bottom repeat-x $color-shopping;
+      background-size: cover;
+      &:after {
+        border-color: $color-shopping transparent transparent transparent;
+      }
+  }
+}
 @mixin colorModifier {
   &--hebergement {
       color: $color-hebergement;

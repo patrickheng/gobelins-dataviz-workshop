@@ -105,7 +105,8 @@
             transition-delay: 0s;
           }
         }
-        @include backgroundModifier;
+        @include backgroundPatternModifier;
+
       }
       .country-graph-bar-details {
         position: absolute;
