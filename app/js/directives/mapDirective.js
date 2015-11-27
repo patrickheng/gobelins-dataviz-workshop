@@ -45,6 +45,7 @@ function map($rootScope, $timeout, StatsService) {
       // Init
       $timeout(()=>{
         scope.initMap();
+        // scope.initHelpers();
       },0)
 
       // Listeners
@@ -125,8 +126,9 @@ function map($rootScope, $timeout, StatsService) {
           scope.mapIsInit = true;
           pixiMap = new PixiMap(pixiOptions);
           mapTl.kill();
-
           scope.colorateMap();
+
+          $rootScope.$broadcast('showHelpers');
         }});
 
         mapTl.staggerFromTo(mapGround, 0.8, {scale:1.5, opacity:0}, { scale: 1, opacity: 1, ease: Cubic.easeOut}, 0.01);
@@ -211,7 +213,6 @@ function map($rootScope, $timeout, StatsService) {
           scope.isHovered = false;
         }
       };
-
 
       /**
        * @method

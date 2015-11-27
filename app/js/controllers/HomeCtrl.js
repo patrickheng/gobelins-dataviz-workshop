@@ -19,34 +19,12 @@ function HomeCtrl($scope, $rootScope, $timeout) {
   }, 0);
 
   $scope.$on('goToMap', (ev, arg) => {
-    const introductionEl = document.querySelector('.introduction');
-
-    $scope.mapIsDisplay = true;
-
-    const tl = new TimelineMax({onComplete: ()=>{
-      $scope.landingPageIsDisplay = false;
-      $scope.$apply();
-    }});
-
-    tl.to(introductionEl, 2, {y: '-100%',ease: Expo.easeOut});
-
+    vm.goToMap();
   });
 
 
   $scope.$on('goToHome', (ev, arg) => {
-    $scope.landingPageIsDisplay = true;
-
-    $timeout(()=>{
-      TweenMax.killAll();
-      const introductionEl = document.querySelector('.introduction');
-
-      const tl = new TimelineMax({onComplete: ()=>{
-        $scope.mapIsDisplay = false;
-        $scope.$apply();
-      }});
-      vm.introTl();
-      tl.fromTo(introductionEl, 1, {y: '-100%'}, {y: '0%',ease: Expo.easeOut});
-    },0)
+    vm.goToHome();
   });
 
 
@@ -96,7 +74,54 @@ function HomeCtrl($scope, $rootScope, $timeout) {
       .from(iphoneSreen, 0.2, {opacity:1, ease: SteppedEase.config(5)})
       .from(iphoneSreen, 0.2, {opacity:0, ease: SteppedEase.config(5)})
       .from(middleIllus, 1, {y: '100%', scale: 1.4, ease: Expo.easeOut}, "-=0.7")
-      .fromTo(btn, 1, {y: '100%', scale: 1.1}, {y: '0%', scale: 1, opacity:1, ease: Back.easeOut}, "-=0.7")
+      .fromTo(btn, 1, {y: '100%', opacity:0, scale: 1.1}, {y: '0%', scale: 1, opacity:1, ease: Back.easeOut}, "-=0.7")
+  }
+
+  /**
+   * @method
+   * @name goToHome
+   * @description Link to landing view
+   */
+  vm.goToHome = () => {
+    $scope.landingPageIsDisplay = true;
+
+    $timeout(()=>{
+      TweenMax.killAll();
+      const introductionEl = document.querySelector('.introduction');
+
+      const tl = new TimelineMax({onComplete: ()=>{
+        $scope.mapIsDisplay = false;
+        $scope.$apply();
+      }});
+      vm.introTl();
+      tl.fromTo(introductionEl, 1, {y: '-100%'}, {y: '0%',ease: Expo.easeOut});
+    },0)
+  }
+
+  /**
+   * @method
+   * @name goToMap
+   * @description Link to map view
+   */
+  vm.goToMap = () => {
+    const introductionEl = document.querySelector('.introduction');
+
+    $scope.mapIsDisplay = true;
+
+    const tl = new TimelineMax({onComplete: ()=>{
+      $scope.landingPageIsDisplay = false;
+      $scope.$apply();
+    }});
+
+    tl.to(introductionEl, 2, {y: '-100%',ease: Expo.easeOut});
+  }
+
+  // Binding escape key
+  window.onkeyup = (ev) => {
+    if($scope.landingPageIsDisplay && ev.keyCode == 40) {
+        vm.goToMap();
+        $scope.$apply();
+    }
   }
 
 }

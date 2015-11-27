@@ -35,3 +35,11 @@
     transform: scale(1.07);
   }
 }
+@keyframes pulseBig {
+  from, to {
+    transform: none;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}

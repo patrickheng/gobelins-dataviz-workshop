@@ -1,0 +1,42 @@
+.helpers {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  animation: fadeIn 1s ease-out;
+  cursor: pointer;
+
+  .helper {
+    position: absolute;
+    z-index: 1001;
+    color: $color-white;
+    font-size: 2rem;
+    z-index: 1000;
+    &--filter {
+      bottom: 24%;
+      left: 20%;
+      img {
+        position: absolute;
+        width: 30px;
+        bottom: -60px;
+        right: -40px;
+        animation: pulseBig 1s infinite;
+      }
+    }
+    &--country {
+      top: 50%;
+      right: 45%;
+      img {
+        position: absolute;
+        width: 60px;
+        bottom: 0px;
+        right: -40px;
+        animation: pulseBig 1s infinite;
+      }
+    }
+  }
+
+}
