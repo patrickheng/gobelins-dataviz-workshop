@@ -7,6 +7,7 @@
   z-index: 10000;
   overflow:hidden;
   background: $color-deep-dark-blue;
+
 }
 
 .introduction-scene {
@@ -33,19 +34,30 @@
 }
 
 .middle-illus {
+
   position: absolute;
-  bottom:0;
-  height: 85%;
+  width: 67%;
+  left: 1%;
+  bottom: 0;
+  .button-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 #discover-button {
-
   @include ghostButton;
-  bottom : 8rem;
+  bottom: auto;
+  top: 60%;
+  left: 43%;
   z-index: 1000;
-  left: 30%;
-  bottom: 28%;
   right: auto;
+
+}
+
+@media only screen and (max-width: 1600px) {
+
 }
 
 @keyframes pop {
@@ -179,7 +191,7 @@
   }
 }
 
-.middle-illus {
+.middle-illus svg {
   .st0 {
       fill: #020525;
   }
